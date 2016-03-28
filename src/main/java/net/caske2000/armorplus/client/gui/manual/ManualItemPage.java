@@ -37,7 +37,7 @@ public class ManualItemPage extends GuiPage
         RenderHelper.enableGUIStandardItemLighting();
 
         GlStateManager.scale(2, 2, 2);
-        gui.drawString(Minecraft.getMinecraft().fontRendererObj, "§6§n" + gui.itemInfo.getName(), gui.xPos / 2 + 10, gui.yPos / 2 + 20, 0xFFFFFF);
+        gui.drawString(Minecraft.getMinecraft().fontRendererObj, "§5§n" + gui.itemInfo.getName(), gui.xPos / 2 + 10, gui.yPos / 2 + 20, 0xFFFFFF);
         GlStateManager.scale(1.5, 1.5, 1.5);
         Minecraft.getMinecraft().getRenderItem().renderItemIntoGUI(gui.itemInfo.getItemStack(), (gui.xPos + gui.xSize) / 3 - 25, gui.yPos / 3 + 10);
 

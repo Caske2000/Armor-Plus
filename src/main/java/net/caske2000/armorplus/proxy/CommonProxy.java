@@ -1,6 +1,5 @@
 package net.caske2000.armorplus.proxy;
 
-import cofh.api.energy.IEnergyContainerItem;
 import com.google.common.collect.Maps;
 import net.caske2000.armorplus.ArmorPlus;
 import net.caske2000.armorplus.blocks.ModBlocks;
@@ -9,13 +8,13 @@ import net.caske2000.armorplus.items.ArmorRecipe;
 import net.caske2000.armorplus.items.ModItems;
 import net.caske2000.armorplus.tileentities.TileEntityArmorCharger;
 import net.caske2000.armorplus.tileentities.TileEntityArmorTable;
-import net.caske2000.armorplus.util.NBTHelper;
+import net.caske2000.armorplus.util.EventHandler;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.ShapedRecipes;
+import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
@@ -37,6 +36,7 @@ public class CommonProxy
 
     public void init(FMLInitializationEvent event)
     {
+        FMLCommonHandler.instance().bus().register(new EventHandler());
         NetworkRegistry.INSTANCE.registerGuiHandler(ArmorPlus.instance, new GuiHandler());
         GameRegistry.registerTileEntity(TileEntityArmorTable.class, "armorTable_tile_entity");
         GameRegistry.registerTileEntity(TileEntityArmorCharger.class, "armorCharger_tile_entity");

@@ -5,7 +5,6 @@ import net.caske2000.armorplus.lib.Reference;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.item.Item;
-import net.minecraftforge.fml.common.Mod;
 
 /**
  * Created by Caske2000 on 5/02/2016.

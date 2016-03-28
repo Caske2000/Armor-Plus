@@ -1,8 +1,5 @@
 package net.caske2000.armorplus.items;
 
-import net.minecraft.item.ItemArmor;
-import net.minecraftforge.common.util.EnumHelper;
-
 /**
  * Created by Caske2000 on 28/03/2016.
  */

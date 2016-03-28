@@ -1,8 +1,10 @@
 package net.caske2000.armorplus.proxy;
 
+import net.caske2000.armorplus.ArmorPlus;
 import net.caske2000.armorplus.render.*;
 import net.caske2000.armorplus.tileentities.TileEntityArmorCharger;
 import net.caske2000.armorplus.tileentities.TileEntityArmorTable;
+import net.caske2000.armorplus.util.VersionChecker;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -37,6 +39,9 @@ public class ClientProxy extends CommonProxy
     @Override
     public void postInit(FMLPostInitializationEvent event)
     {
+        ArmorPlus.versionChecker = new VersionChecker();
+        Thread versionCheckThread = new Thread(ArmorPlus.versionChecker, "Version Check");
+        versionCheckThread.start();
         super.postInit(event);
     }
 }

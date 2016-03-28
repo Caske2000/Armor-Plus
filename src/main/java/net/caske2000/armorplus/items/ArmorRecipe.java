@@ -2,11 +2,8 @@ package net.caske2000.armorplus.items;
 
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.ShapedRecipes;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.world.World;
-import net.minecraftforge.oredict.ShapedOreRecipe;
 
 /**
  * Created by Caske2000 on 28/03/2016.
