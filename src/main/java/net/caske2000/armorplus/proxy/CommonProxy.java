@@ -14,7 +14,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.fml.common.FMLCommonHandler;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
@@ -36,7 +36,7 @@ public class CommonProxy
 
     public void init(FMLInitializationEvent event)
     {
-        FMLCommonHandler.instance().bus().register(new EventHandler());
+        MinecraftForge.EVENT_BUS.register(new EventHandler());
         NetworkRegistry.INSTANCE.registerGuiHandler(ArmorPlus.instance, new GuiHandler());
         GameRegistry.registerTileEntity(TileEntityArmorTable.class, "armorTable_tile_entity");
         GameRegistry.registerTileEntity(TileEntityArmorCharger.class, "armorCharger_tile_entity");
@@ -80,9 +80,8 @@ public class CommonProxy
         {
             String[] astring = (String[])(recipeComponents[i++]);
 
-            for (int l = 0; l < astring.length; ++l)
+            for (String s2 : astring)
             {
-                String s2 = astring[l];
                 ++k;
                 j = s2.length();
                 s = s + s2;
@@ -122,8 +121,8 @@ public class CommonProxy
         {
             char c0 = s.charAt(i1);
 
-            if (map.containsKey(Character.valueOf(c0)))
-                aitemstack[i1] = (map.get(Character.valueOf(c0))).copy();
+            if (map.containsKey(c0))
+                aitemstack[i1] = (map.get(c0)).copy();
             else
                 aitemstack[i1] = null;
         }
