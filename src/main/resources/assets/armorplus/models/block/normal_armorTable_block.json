@@ -1,0 +1,7 @@
+{
+  "parent": "armorplus:block/armorTable_block",
+  "textures": {
+    "stone": "blocks/stone",
+    "cobble": "blocks/cobblestone"
+  }
+}
