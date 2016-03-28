@@ -2,7 +2,7 @@
 
 ##What is Armor Plus?
 
-Armor Plus is this cool mod which adds in a special type of armor: Customizable Armor. Some customizabilities are the Auto-Feeder, Death Protection and Bad Potion Remover. This all comes at a price of course: RF.
+Armor Plus is this cool mod which adds in a special type of armor: Customizable Armor. Some customizabilities are the Auto-Feeder, Death Protection and Bad Potion Remover. This all comes at a price of course: Redstone Flux.
 
 PS: Keep in mind that this mod is this in active development, so if there is anything you don't like, just leave me a message on the MinecraftForum (or another medium)
 

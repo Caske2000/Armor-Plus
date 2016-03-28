@@ -2,13 +2,13 @@
 {
   "modid": "armorplus",
   "name": "ArmorPlus Mod",
-  "description": "Example placeholder mod.",
+  "description": "Armor Plus is this cool mod which adds in a special type of armor: Customizable Armor.",
   "version": "${version}",
   "mcversion": "${mcversion}",
   "url": "",
   "updateUrl": "",
   "authorList": ["Caske2000"],
-  "credits": "The Forge and FML guys, for making this example",
+  "credits": "This mod is made by Caske2000.",
   "logoFile": "",
   "screenshots": [],
   "dependencies": []

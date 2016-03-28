@@ -16,7 +16,9 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 import java.io.BufferedReader;
+import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.URL;
 
 @Mod(modid = Reference.MODID, name = Reference.MODNAME, version = Reference.VERSION)
 public class ArmorPlus
@@ -36,9 +38,13 @@ public class ArmorPlus
 
         JsonParser parser = new JsonParser();
         BufferedReader br;
-
+        InputStream in = null;
         try
         {
+            in = new URL("https://raw.githubusercontent.com/Caske2000/Armor-Plus/master/build.gradle").openStream();
+
+            in.close();
+
             br = new BufferedReader(new InputStreamReader(getClass().getClassLoader()
                     .getResourceAsStream("assets/armorplus/lang/manual_" + FMLCommonHandler.instance().getCurrentLanguage() + ".json"), "UTF-8"));
             if (!br.ready())
