@@ -10,7 +10,7 @@ import net.minecraft.util.ResourceLocation;
 /**
  * Created by Caske2000 on 5-3-2016.
  */
-public class GuiArmorTable extends GuiContainer
+class GuiArmorTable extends GuiContainer
 {
     private final IInventory playerInv;
     private final TileEntityArmorTable te;

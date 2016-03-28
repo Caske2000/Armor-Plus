@@ -19,7 +19,7 @@ public class HudHandler extends GuiScreen
     private static final ResourceLocation WARNING_SIGN = new ResourceLocation("armorplus", "textures/gui/manualBackground.png");
     private static final Minecraft mc = Minecraft.getMinecraft();
 
-    public void checkHUD()
+    private void checkHUD()
     {
         if ((mc.inGameHasFocus || (mc.currentScreen != null && (mc.currentScreen instanceof GuiChat))) && !mc.gameSettings.showDebugInfo)
         {
@@ -42,7 +42,7 @@ public class HudHandler extends GuiScreen
         }
     }
 
-    public void drawWarningSign()
+    private void drawWarningSign()
     {
         GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
         mc.renderEngine.bindTexture(WARNING_SIGN);

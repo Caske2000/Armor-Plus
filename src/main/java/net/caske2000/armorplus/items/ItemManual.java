@@ -14,7 +14,7 @@ import java.util.List;
 /**
  * Created by Caske2000 on 27/03/2016.
  */
-public class ItemManual extends Item
+class ItemManual extends Item
 {
     public ItemManual()
     {

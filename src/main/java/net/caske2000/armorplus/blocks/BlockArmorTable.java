@@ -21,7 +21,7 @@ import net.minecraft.world.World;
 /**
  * Created by Caske2000 on 8-2-2016.
  */
-public class BlockArmorTable extends BlockContainer
+class BlockArmorTable extends BlockContainer
 {
     public BlockArmorTable()
     {

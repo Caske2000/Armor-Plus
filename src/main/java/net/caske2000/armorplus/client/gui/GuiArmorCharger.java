@@ -14,7 +14,7 @@ import net.minecraft.util.ResourceLocation;
 /**
  * Created by Caske2000 on 26/03/2016.
  */
-public class GuiArmorCharger extends GuiContainer
+class GuiArmorCharger extends GuiContainer
 {
     private final IInventory playerInv;
     private final TileEntityArmorCharger te;

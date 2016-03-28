@@ -14,12 +14,19 @@ public class GuiManual extends GuiScreen
 {
     private static final ResourceLocation MANUAL_TEXTURES = new ResourceLocation("armorplus", "textures/gui/manualBackground.png");
 
-    protected int xPos, drawXPos, yPos, drawYPos, xSize = 335, drawXSize = Math.round(xSize / 1.5F), ySize = 246, drawYSize = Math.round(ySize / 1.5F);
+    int xPos;
+    private int drawXPos;
+    int yPos;
+    private int drawYPos;
+    final int xSize = 335;
+    private final int drawXSize = Math.round(xSize / 1.5F);
+    final int ySize = 246;
+    private final int drawYSize = Math.round(ySize / 1.5F);
 
-    protected ManualSubjectPage subjectPage;
-    protected GuiItemInfo itemInfo;
+    ManualSubjectPage subjectPage;
+    GuiItemInfo itemInfo;
 
-    private GuiPage[] menus = new GuiPage[] {new ManualMainPage(this), subjectPage = new ManualSubjectPage(this, false), new ManualItemPage(this)};
+    private final GuiPage[] menus = new GuiPage[] {new ManualMainPage(this), subjectPage = new ManualSubjectPage(this, false), new ManualItemPage(this)};
     // 0 = Main Page    1 = Subject Page    2 = Item
     private short menuLevel = 0;
 
@@ -67,7 +74,7 @@ public class GuiManual extends GuiScreen
         menus[menuLevel].actionPerformed(button);
     }
 
-    protected void changeLevel(short level)
+    void changeLevel(short level)
     {
         if (level < 0 || level > menus.length)
             throw new IllegalArgumentException("You can only change to a manual level x, where x ∈ [0, 2]");

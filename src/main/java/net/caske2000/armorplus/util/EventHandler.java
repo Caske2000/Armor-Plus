@@ -22,7 +22,7 @@ public class EventHandler
                     "https://github.com/Caske2000/Armor-Plus");
             ChatStyle clickableChatStyle = new ChatStyle().setChatClickEvent(versionCheckChatClickEvent);
             ChatComponentText versionWarningChatComponent =
-                    new ChatComponentText("Your Armor Plus Mod is not the latest version!  Click here to update.");
+                    new ChatComponentText("§4§nYour Armor Plus Mod is not the latest version!  Click here to update.");
             versionWarningChatComponent.setChatStyle(clickableChatStyle);
             event.player.addChatMessage(versionWarningChatComponent);
             ArmorPlus.isWarnedVersionOutOfDate = true;

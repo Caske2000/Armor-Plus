@@ -10,11 +10,12 @@ import net.minecraft.item.ItemStack;
 /**
  * Created by Caske2000 on 27/03/2016.
  */
-public class GuiTexturedButton extends GuiButton
+class GuiTexturedButton extends GuiButton
 {
-    private ItemStack itemStack;
-    private int scale, stringWidth;
-    private String text;
+    private final ItemStack itemStack;
+    private final int scale;
+    private final int stringWidth;
+    private final String text;
     private ScaledResolution res;
 
     public GuiTexturedButton(int buttonId, int x, int y, ItemStack itemStack, String text, int scale)

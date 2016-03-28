@@ -15,7 +15,7 @@ import java.util.List;
 /**
  * Created by Caske2000 on 28/03/2016.
  */
-public class ItemEnergyCore extends ItemEnergyContainer
+class ItemEnergyCore extends ItemEnergyContainer
 {
     public ItemEnergyCore()
     {

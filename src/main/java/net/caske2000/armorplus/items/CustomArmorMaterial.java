@@ -3,9 +3,9 @@ package net.caske2000.armorplus.items;
 /**
  * Created by Caske2000 on 28/03/2016.
  */
-public class CustomArmorMaterial
+class CustomArmorMaterial
 {
-    private String name;
+    private final String name;
     private final int[] energyData;
 
     public CustomArmorMaterial(String name, int[] energyData)

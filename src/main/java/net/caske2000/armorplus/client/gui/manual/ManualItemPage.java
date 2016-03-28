@@ -12,7 +12,6 @@ import java.io.IOException;
  */
 public class ManualItemPage extends GuiPage
 {
-    private GuiNextPageButton previousPageBtn;
 
     public ManualItemPage(GuiManual gui)
     {
@@ -23,7 +22,7 @@ public class ManualItemPage extends GuiPage
     public void init()
     {
         buttons.clear();
-        buttons.add(this.previousPageBtn = new GuiNextPageButton(0, gui.xPos + 24, gui.yPos + gui.ySize - 39, false));
+        buttons.add(new GuiNextPageButton(0, gui.xPos + 24, gui.yPos + gui.ySize - 39, false));
     }
 
     @Override
@@ -47,7 +46,7 @@ public class ManualItemPage extends GuiPage
     }
 
     @Override
-    public void actionPerformed(GuiButton button) throws IOException
+    public void actionPerformed(GuiButton button)
     {
         if (button.id == 0)
             gui.changeLevel((short) 1);

@@ -12,8 +12,6 @@ import java.io.IOException;
  */
 public class ManualMainPage extends GuiPage
 {
-    private GuiTexturedButton blocksBtn, itemsBtn;
-
     public ManualMainPage(GuiManual gui)
     {
         super(gui);
@@ -23,8 +21,8 @@ public class ManualMainPage extends GuiPage
     public void init()
     {
         buttons.clear();
-        buttons.add(blocksBtn = new GuiTexturedButton(0, gui.xPos + (gui.xSize / 2 - 45) / 2, gui.yPos + (gui.ySize / 2 - 45) / 2, new ItemStack(ModBlocks.armorTable), "Blocks", 3));
-        buttons.add(itemsBtn = new GuiTexturedButton(1, gui.xPos + (gui.xSize / 2 - 45) / 2 + gui.xSize / 2, gui.yPos + (gui.ySize / 2 - 45) / 2, new ItemStack(ModItems.customChestplateIron), "Items", 3));
+        buttons.add(new GuiTexturedButton(0, gui.xPos + (gui.xSize / 2 - 45) / 2, gui.yPos + (gui.ySize / 2 - 45) / 2, new ItemStack(ModBlocks.armorTable), "Blocks", 3));
+        buttons.add(new GuiTexturedButton(1, gui.xPos + (gui.xSize / 2 - 45) / 2 + gui.xSize / 2, gui.yPos + (gui.ySize / 2 - 45) / 2, new ItemStack(ModItems.customChestplateIron), "Items", 3));
     }
 
     @Override
@@ -34,7 +32,7 @@ public class ManualMainPage extends GuiPage
     }
 
     @Override
-    public void actionPerformed(GuiButton button) throws IOException
+    public void actionPerformed(GuiButton button)
     {
         if (button.id == 0)
         {

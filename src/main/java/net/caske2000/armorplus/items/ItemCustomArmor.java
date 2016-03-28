@@ -27,10 +27,12 @@ import java.util.List;
  */
 public class ItemCustomArmor extends ItemArmor implements IEnergyContainerItem, ISpecialArmor
 {
-    private CustomArmorMaterial customMaterial;
+    private final CustomArmorMaterial customMaterial;
     private final int maxEnergy, maxTransfer, energyPerDamage;
-    private short upgradeAmount, maxUpgradeAmount;
-    private int timer = 0, ticksPerUpdate = 60, tmpCost;
+    private final short upgradeAmount;
+    private final short maxUpgradeAmount;
+    private int timer = 0;
+    private int tmpCost;
     // TODO stop checking isEfficient every tick, save it in NBT
     private boolean warning, isEfficient = false;
 
@@ -72,12 +74,9 @@ public class ItemCustomArmor extends ItemArmor implements IEnergyContainerItem, 
     @Override
     public void onArmorTick(World world, EntityPlayer player, ItemStack itemStack)
     {
-        if (NBTHelper.getInteger(itemStack, "ENERGY", 0) < 5000)
-            warning = true;
-        else
-            warning = false;
+        warning = NBTHelper.getInteger(itemStack, "ENERGY", 0) < 5000;
 
-        if (timer > ticksPerUpdate)
+        if (timer > 60)
             timer = 0;
         tmpCost = 0;
         if (((ItemCustomArmor) itemStack.getItem()).getEnergyStored(itemStack) < 500 * upgradeAmount)

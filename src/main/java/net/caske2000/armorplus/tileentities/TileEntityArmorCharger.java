@@ -22,11 +22,13 @@ import java.util.Random;
  */
 public class TileEntityArmorCharger extends TileEntityLockable implements IEnergyProvider, IEnergyReceiver, IPipeConnection, IInventory, ITickable
 {
-    private int energy, maxEnergy = Reference.Numbers.CHARGER_MAX_ENERGY, maxTransfer = Reference.Numbers.CHARGER_MAX_TRANSFER;
+    private int energy;
+    private final int maxEnergy = Reference.Numbers.CHARGER_MAX_ENERGY;
+    private final int maxTransfer = Reference.Numbers.CHARGER_MAX_TRANSFER;
 
     private ItemStack armorChargerItemStack = null;
     private String customName;
-    private Random rand = new Random();
+    private final Random rand = new Random();
 
     @Override
     public Container createContainer(InventoryPlayer playerInventory, EntityPlayer playerIn)

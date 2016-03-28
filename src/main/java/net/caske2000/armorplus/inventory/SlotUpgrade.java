@@ -8,7 +8,7 @@ import net.minecraft.item.ItemStack;
 /**
  * Created by Caske2000 on 6-3-2016.
  */
-public class SlotUpgrade extends Slot
+class SlotUpgrade extends Slot
 {
     public SlotUpgrade(IInventory inv, int index, int xPos, int yPos)
     {

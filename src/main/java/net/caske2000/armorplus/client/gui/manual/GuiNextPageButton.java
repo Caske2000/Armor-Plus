@@ -8,7 +8,7 @@ import net.minecraft.util.ResourceLocation;
 /**
  * Created by Caske2000 on 27/03/2016.
  */
-public class GuiNextPageButton extends GuiButton
+class GuiNextPageButton extends GuiButton
 {
     private final boolean isNextBtn;
     private final ResourceLocation TEXTURE = new ResourceLocation("armorplus", "textures/gui/manualBackground.png");

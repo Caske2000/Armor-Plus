@@ -10,7 +10,6 @@ import java.io.*;
  */
 public class ManualSubjectPage extends GuiPage
 {
-    private GuiNextPageButton previousPageBtn;
     private boolean isBlocks;
 
     public ManualSubjectPage(GuiManual gui, boolean isBlocks)
@@ -23,7 +22,7 @@ public class ManualSubjectPage extends GuiPage
     public void init()
     {
         buttons.clear();
-        buttons.add(this.previousPageBtn = new GuiNextPageButton(0, gui.xPos + 24, gui.yPos + gui.ySize - 39, false));
+        buttons.add(new GuiNextPageButton(0, gui.xPos + 24, gui.yPos + gui.ySize - 39, false));
         int i = 1;
         if (isBlocks)
         {
@@ -50,7 +49,7 @@ public class ManualSubjectPage extends GuiPage
     }
 
     @Override
-    public void actionPerformed(GuiButton button) throws IOException
+    public void actionPerformed(GuiButton button)
     {
         if (button.id == 0)
             gui.changeLevel((short) 0);

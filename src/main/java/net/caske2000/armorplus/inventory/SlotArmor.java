@@ -8,7 +8,7 @@ import net.minecraft.item.ItemStack;
 /**
  * Created by Caske2000 on 6-3-2016.
  */
-public class SlotArmor extends Slot
+class SlotArmor extends Slot
 {
     private final boolean isInput;
 

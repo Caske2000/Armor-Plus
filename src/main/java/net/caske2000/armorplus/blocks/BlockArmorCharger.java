@@ -21,7 +21,7 @@ import net.minecraft.world.World;
 /**
  * Created by Caske2000 on 25/03/2016.
  */
-public class BlockArmorCharger extends BlockContainer
+class BlockArmorCharger extends BlockContainer
 {
     public BlockArmorCharger()
     {

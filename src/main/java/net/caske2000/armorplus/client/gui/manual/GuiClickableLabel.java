@@ -7,7 +7,7 @@ import net.minecraft.client.renderer.GlStateManager;
 /**
  * Created by Caske2000 on 27/03/2016.
  */
-public class GuiClickableLabel extends GuiButton
+class GuiClickableLabel extends GuiButton
 {
     public GuiClickableLabel(int buttonId, int x, int y, String buttonText)
     {
