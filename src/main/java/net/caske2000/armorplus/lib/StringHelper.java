@@ -1,7 +1,12 @@
 package net.caske2000.armorplus.lib;
 
+import net.minecraft.util.ChatStyle;
+import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.StatCollector;
+import net.minecraftforge.fml.client.config.GuiConfigEntries;
 import org.lwjgl.input.Keyboard;
+
+import java.awt.*;
 
 /**
  * Created by Caske2000 on 8-2-2016.
@@ -10,7 +15,7 @@ public final class StringHelper
 {
     public static String shiftForInfo()
     {
-        return "§b§o" + localize("info.caske.hold") + " §r§e" + localize("info.caske.shift") + " §r" + "§b§o" + localize("info.caske.moreInfo");
+        return EnumChatFormatting.AQUA + "" + EnumChatFormatting.ITALIC + localize("info.caske.hold") + EnumChatFormatting.RESET + "" + EnumChatFormatting.YELLOW + localize("info.caske.shift") + EnumChatFormatting.RESET + "" + EnumChatFormatting.AQUA + "" + EnumChatFormatting.ITALIC + localize("info.caske.moreInfo");
     }
 
     public static boolean isShiftKeyDown() {

@@ -6,6 +6,7 @@ import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumChatFormatting;
 
 /**
  * Created by Caske2000 on 27/03/2016.
@@ -23,7 +24,7 @@ class GuiTexturedButton extends GuiButton
         // The size of a scale = 1 item is 15x15 pixels
         super(buttonId, x, y, 15 * scale, 15 * scale, "");
         this.itemStack = itemStack;
-        this.text = "§6§n" + text;
+        this.text = EnumChatFormatting.UNDERLINE + text;
         this.stringWidth = Minecraft.getMinecraft().fontRendererObj.getStringWidth(text);
         this.scale = scale;
     }
@@ -87,7 +88,7 @@ class GuiTexturedButton extends GuiButton
         this.drawGradientRect(newX - 3, newY - 3, newX + stringWidth + 3, newY - 3 + 1, i1, i1);
         this.drawGradientRect(newX - 3, newY + 8 + 2, newX + stringWidth + 3, newY + 8 + 3, j1, j1);
 
-        Minecraft.getMinecraft().fontRendererObj.drawStringWithShadow(this.text, (float) newX, (float) newY, -1);
+        Minecraft.getMinecraft().fontRendererObj.drawStringWithShadow(this.text, (float) newX, (float) newY, 0xFFAA00);
 
         this.zLevel = 0.0F;
         Minecraft.getMinecraft().getRenderItem().zLevel = 0.0F;

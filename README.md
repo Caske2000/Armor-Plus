@@ -24,6 +24,8 @@ Step 1) Download [Forge](http://files.minecraftforge.net/) for Minecraft (I reco
 
 Step 2) Download the latest version of Armor Plus (see Links: CurseForge)
 
+Step 2.5) It's currently neccessairy to also have to mod BuildCraft installed, so download it as well
+
 Step 3) Just place the mod file in the 'mods' folder of your .minecraft directory.
 
 ~Caske2000

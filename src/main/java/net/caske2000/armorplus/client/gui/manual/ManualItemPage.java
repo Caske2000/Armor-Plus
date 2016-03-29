@@ -4,6 +4,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderHelper;
+import net.minecraft.util.EnumChatFormatting;
 
 import java.io.IOException;
 
@@ -36,7 +37,7 @@ public class ManualItemPage extends GuiPage
         RenderHelper.enableGUIStandardItemLighting();
 
         GlStateManager.scale(2, 2, 2);
-        gui.drawString(Minecraft.getMinecraft().fontRendererObj, "§b§n" + gui.itemInfo.getName(), gui.xPos / 2 + 10, gui.yPos / 2 + 20, 0xFFFFFF);
+        gui.drawString(Minecraft.getMinecraft().fontRendererObj, EnumChatFormatting.UNDERLINE + gui.itemInfo.getName(), gui.xPos / 2 + 10, gui.yPos / 2 + 20, 0x55FFFF);
         GlStateManager.scale(1.5, 1.5, 1.5);
         Minecraft.getMinecraft().getRenderItem().renderItemIntoGUI(gui.itemInfo.getItemStack(), (gui.xPos + gui.xSize) / 3 - 25, gui.yPos / 3 + 10);
 
