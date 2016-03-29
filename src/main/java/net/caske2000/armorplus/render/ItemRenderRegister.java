@@ -37,9 +37,10 @@ public final class ItemRenderRegister
         reg(ModItems.armorUpgradeFlight);
         reg(ModItems.armorUpgradeNightVision);
 
-        reg (ModItems.manual);
-        reg (ModItems.energyCore);
-        reg (ModItems.alloy);
+        reg(ModItems.manual);
+        reg(ModItems.energyCore);
+        reg(ModItems.alloy);
+        reg(ModItems.armorUpgradeTemplate);
     }
 
     private static void reg(Item item)

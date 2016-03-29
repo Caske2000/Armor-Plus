@@ -48,6 +48,16 @@ public class CommonProxy
         GameRegistry.addShapelessRecipe(new ItemStack(ModItems.manual), new Object[]{Items.book, Items.redstone, Blocks.lever});
         GameRegistry.addShapelessRecipe(new ItemStack(ModItems.alloy), new Object[]{Blocks.obsidian, ModItems.energyCore});
         GameRegistry.addRecipe(new ItemStack(ModItems.energyCore), new Object[]{"IXI", "LVL", "IXI", 'I', Blocks.redstone_block, 'V', Items.comparator, 'X', Items.diamond, 'L', Blocks.redstone_torch});
+        GameRegistry.addShapelessRecipe(new ItemStack(ModItems.armorUpgradeTemplate), new Object[]{ModItems.energyCore, Items.book, Items.diamond});
+
+        GameRegistry.addShapelessRecipe(new ItemStack(ModItems.armorUpgradeSpeed), new Object[]{ModItems.armorUpgradeTemplate, Items.diamond, Items.sugar});
+        GameRegistry.addShapelessRecipe(new ItemStack(ModItems.armorUpgradeDeathProtection), new Object[]{ModItems.armorUpgradeTemplate, Items.diamond, Items.diamond_hoe});
+        GameRegistry.addShapelessRecipe(new ItemStack(ModItems.armorUpgradeFeeder), new Object[]{ModItems.armorUpgradeTemplate, Items.diamond, Items.golden_apple});
+        GameRegistry.addShapelessRecipe(new ItemStack(ModItems.armorUpgradeDigSpeed), new Object[]{ModItems.armorUpgradeTemplate, Items.diamond, Items.diamond_pickaxe});
+        GameRegistry.addShapelessRecipe(new ItemStack(ModItems.armorUpgradePotionRemover), new Object[]{ModItems.armorUpgradeTemplate, Items.diamond, Items.ghast_tear});
+        GameRegistry.addShapelessRecipe(new ItemStack(ModItems.armorUpgradeEfficiency), new Object[]{ModItems.armorUpgradeTemplate, Items.diamond, Blocks.redstone_block, Items.gold_ingot});
+        GameRegistry.addShapelessRecipe(new ItemStack(ModItems.armorUpgradeFlight), new Object[]{ModItems.armorUpgradeTemplate, Items.diamond, Items.golden_apple, Blocks.diamond_block});
+        GameRegistry.addShapelessRecipe(new ItemStack(ModItems.armorUpgradeNightVision), new Object[]{ModItems.armorUpgradeTemplate, Items.diamond, Items.golden_carrot});
 
         addRecipe(new ItemStack(ModItems.customBootsIron), new Object[]{"   ", "IVI", "I I", 'I', Items.iron_ingot, 'V', ModItems.energyCore});
         addRecipe(new ItemStack(ModItems.customLeggingsIron), new Object[]{"IVI", "I I", "I I", 'I', Items.iron_ingot, 'V', ModItems.energyCore});

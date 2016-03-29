@@ -11,6 +11,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
  */
 public final class ModItems
 {
+    public static Item armorUpgradeTemplate;
     public static Item armorUpgradeSpeed;
     public static Item armorUpgradeDeathProtection;
     public static Item armorUpgradeFeeder;
@@ -19,7 +20,6 @@ public final class ModItems
     public static Item armorUpgradeEfficiency;
     public static Item armorUpgradeFlight;
     public static Item armorUpgradeNightVision;
-
 
     public static Item customBootsIron;
     public static Item customLeggingsIron;
@@ -77,5 +77,6 @@ public final class ModItems
         GameRegistry.registerItem(manual = new ItemManual(), Reference.Names.MANUAL);
         GameRegistry.registerItem(energyCore = new ItemEnergyCore(), Reference.Names.ENERGY_CORE);
         GameRegistry.registerItem(alloy = new Item().setUnlocalizedName(Reference.Names.ALLOY).setCreativeTab(CreativeTab.ARMOR_TAB), Reference.Names.ALLOY);
+        GameRegistry.registerItem(armorUpgradeTemplate = new Item().setUnlocalizedName(Reference.Names.ARMOR_UPGRADE_TEMPLATE).setCreativeTab(CreativeTab.ARMOR_TAB), Reference.Names.ARMOR_UPGRADE_TEMPLATE);
     }
 }

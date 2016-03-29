@@ -33,6 +33,7 @@ item.customChestplateAlloy_item.name=Custom Alloy Chestplate
 item.customLeggingsAlloy_item.name=Custom Alloy Leggings
 item.customBootsAlloy_item.name=Custom Alloy Boots
 
+item.armorUpgradeTemplate_item.name=Blank Upgrade Template
 item.armorUpgrade_item_SPEED.name=Speed Upgrade
 item.armorUpgrade_item_FEEDER.name=Auto-Feeder Upgrade
 item.armorUpgrade_item_DEATH_PROTECTION.name=Death Protection Upgrade

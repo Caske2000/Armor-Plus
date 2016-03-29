@@ -22,6 +22,7 @@ public final class Reference
     public static final class Names
     {
         public static final String ARMOR_UPGRADE = "armorUpgrade_item_";
+        public static final String ARMOR_UPGRADE_TEMPLATE = "armorUpgradeTemplate_item";
         public static final String MANUAL = "manual_item";
         public static final String ENERGY_CORE = "energyCore_item";
         public static final String ALLOY = "alloy_item";
