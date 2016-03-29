@@ -11,8 +11,8 @@ import java.util.List;
 public final class Reference
 {
     public static final String MODID = "armorplus";
-    public static final String MODNAME = "ArmorPlus Mod";
-    public static final String VERSION = "0.1";
+    public static final String MODNAME = "Commutable Armor";
+    public static final String VERSION = "0.1.1";
 
     public static final String CLIENTPROXY = "net.caske2000.armorplus.proxy.ClientProxy";
     public static final String SERVERPROXY = "net.caske2000.armorplus.proxy.ServerProxy";

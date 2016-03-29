@@ -20,9 +20,9 @@ plugins {
     id "net.minecraftforge.gradle.forge" version "2.0.2"
 }
 */
-version = "Armor Plus(0.1) for MC 1.8.9"
+version = "0.1.1 for MC 1.8.9"
 group= "com.caske2000.armorplus" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = "armorplus"
+archivesBaseName = "Commutable Armor"
 
 minecraft {
     version = "1.8.9-11.15.1.1764"

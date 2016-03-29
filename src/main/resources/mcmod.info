@@ -1,11 +1,11 @@
 [
 {
   "modid": "armorplus",
-  "name": "ArmorPlus Mod",
-  "description": "Armor Plus is this cool mod which adds in a special type of armor: Customizable Armor.",
+  "name": "Commutable Armor",
+  "description": "Commutable Armor is this cool mod which adds in a special type of armor: Customizable Armor.",
   "version": "${version}",
   "mcversion": "${mcversion}",
-  "url": "",
+  "url": "https://github.com/Caske2000/Commutable-Armor",
   "updateUrl": "",
   "authorList": ["Caske2000"],
   "credits": "This mod is made by Caske2000.",

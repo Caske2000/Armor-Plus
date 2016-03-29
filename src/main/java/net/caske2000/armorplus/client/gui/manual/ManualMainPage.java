@@ -18,7 +18,7 @@ import java.net.URISyntaxException;
  */
 public class ManualMainPage extends GuiPage
 {
-    private String webpage = "https://github.com/Caske2000/Armor-Plus";
+    private String webpage = "https://github.com/Caske2000/Commutable-Armor";
 
     public ManualMainPage(GuiManual gui)
     {
@@ -31,7 +31,7 @@ public class ManualMainPage extends GuiPage
         buttons.clear();
         buttons.add(new GuiTexturedButton(0, gui.xPos + (gui.xSize / 2 - 45) / 2, gui.yPos + (gui.ySize / 2 - 45) / 2, new ItemStack(ModBlocks.armorTable), "Blocks", 3));
         buttons.add(new GuiTexturedButton(1, gui.xPos + (gui.xSize / 2 - 45) / 2 + gui.xSize / 2, gui.yPos + (gui.ySize / 2 - 45) / 2, new ItemStack(ModItems.customChestplateIron), "Items", 3));
-        buttons.add(new GuiButton(2, gui.xPos + 24, gui.yPos + gui.ySize - 39, "Click here to visit the WIKI"));
+        buttons.add(new GuiButton(2, gui.xPos + gui.xSize / 2 - 100, gui.yPos + gui.ySize - 39, "Click here to visit the WIKI"));
     }
 
     @Override

@@ -1,5 +1,4 @@
 # Word & Sentence Stuffs
-itemGroup.armorplus=Armor Plus
 info.caske.hold=Hold
 info.caske.shift= Shift
 info.caske.moreInfo= for more info
@@ -20,6 +19,7 @@ info.caske.armor.diamond=This sturdy piece of armor is made out of diamond!
 info.caske.armor.alloy=This sturdy piece of armor is made out of alloy!
 
 # Items
+itemGroup.armorplus=Commutable Armor
 item.customHelmetIron_item.name=Custom Iron Helmet
 item.customChestplateIron_item.name=Custom Iron Chestplate
 item.customLeggingsIron_item.name=Custom Iron Leggings
@@ -43,7 +43,7 @@ item.armorUpgrade_item_EFFICIENCY.name=Efficiency Upgrade
 item.armorUpgrade_item_FLIGHT.name=Flight Upgrade
 item.armorUpgrade_item_NIGHT_VISION.name=Night Vision Upgrade
 
-item.manual_item.name=Armor Plus Manual
+item.manual_item.name=Commutable Armor Manual
 item.energyCore_item.name=Energy Core
 item.alloy_item.name=Energium Alloy Ingot
 

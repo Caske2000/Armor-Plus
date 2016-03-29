@@ -17,6 +17,6 @@ public class ArmorAchievements
     {
         tinkerer = new Achievement("achievement.armorplus_tinkerer", "armorplus_tinkerer", 0, 0, new ItemStack(ModBlocks.armorTable), null).setSpecial().registerStat();
         charger = new Achievement("achievement.armorplus_charger", "armorplus_charger", 2, 0, new ItemStack(ModBlocks.armorCharger), tinkerer).registerStat();
-        AchievementPage.registerAchievementPage(new AchievementPage("Armor Plus", new Achievement[] {tinkerer, charger}));
+        AchievementPage.registerAchievementPage(new AchievementPage("Commutable Armor", new Achievement[] {tinkerer, charger}));
     }
 }

@@ -6,6 +6,7 @@ import net.minecraft.event.ClickEvent;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.ChatStyle;
+import net.minecraft.util.EnumChatFormatting;
 import net.minecraftforge.fml.common.eventhandler.Event;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -28,7 +29,7 @@ public class EventHandler
                     "https://github.com/Caske2000/Armor-Plus");
             ChatStyle clickableChatStyle = new ChatStyle().setChatClickEvent(versionCheckChatClickEvent);
             ChatComponentText versionWarningChatComponent =
-                    new ChatComponentText("§4§nYour Armor Plus Mod is not the latest version!  Click here to update.");
+                    new ChatComponentText(EnumChatFormatting.UNDERLINE + "" + EnumChatFormatting.RED + "Your Commutable Armor Mod is not the latest version!  Click here to update.");
             versionWarningChatComponent.setChatStyle(clickableChatStyle);
             event.player.addChatMessage(versionWarningChatComponent);
             ArmorPlus.isWarnedVersionOutOfDate = true;
