@@ -4,18 +4,34 @@
       "name": "Armor Charger",
       "displayItem": "armorCharger_block",
       "description": [
-        "This block is used to charge your armor."
+        "This block works like a charging station for all",
+        "of your powerhungry devices. To power the block, ",
+        "just hook up some RF to the bottom."
       ]
     },
     {
       "name": "Armor Table",
       "displayItem": "armorTable_block",
       "description": [
-        "This block is used to upgrade your armor."
+        "This block is used to upgrade your armor.",
+        "You place your upgrade in the top slot",
+        "and your armor in the bottom slot",
+        " ",
+        "PS: Make sure the upgrade is suitable for the type",
+        "of armor."
       ]
     }
   ],
   "Items": [
+    {
+      "name": "Energium Alloy Ingot",
+      "displayItem": "alloy_item",
+      "description": [
+        "This special alloy, made by combining an Energy Core and",
+        "a block of obsidian, is used to craft the highest tier",
+        "of Custom Armor."
+      ]
+    },
     {
       "name": "Armor Plus Manual",
       "displayItem": "manual_item",
@@ -27,23 +43,25 @@
       "name": "Armor Upgrades",
       "displayItem": "armorUpgrade_item_FEEDER",
       "description": [
-        "You can use upgrade to add extra features",
-        "to your armor."
+        "You can use upgrades to add extra features to your",
+        "armor. To apply an upgrade: See Armor Table."
       ]
     },
     {
       "name": "Custom Armor",
       "displayItem": "customChestplateIron_item",
       "description": [
-        "This is a special kind of armor which you can upgrade."
+        "This is a special kind of armor which you can upgrade",
+        "in the Armor Table. It comes in three tiers:",
+        "Iron, Diamond and Alloy"
       ]
     },
     {
       "name": "Energy Core",
       "displayItem": "energyCore_item",
       "description": [
-        "The Energy Core is used to craft all of the armorpieces,",
-        "but it can also be used as a normal battery!"
+        "The Energy Core is used to craft all of the pieces of",
+        "armor, but it can also be used as a normal battery!"
       ]
     }
   ]

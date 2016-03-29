@@ -8,6 +8,11 @@ info.caske.energy=Energy Stored
 info.caske.upgrade=Upgrades applied
 info.caske.manual=Sine libris cella, sine anima corpus est
 info.caske.energyCore=This Item can be used as a battery as well!
+info.caske.upgrade_0=This upgrade can be applied to a helmet
+info.caske.upgrade_1=This upgrade can be applied to a chestplate
+info.caske.upgrade_2=This upgrade can be applied to leggings
+info.caske.upgrade_3=This upgrade can be applied to a pair of boots
+info.caske.upgrade_4=This upgrade can be applied to all types of armor
 
 # Tooltips
 info.caske.armor.iron=This sturdy piece of armor is made out of iron!
@@ -34,10 +39,12 @@ item.armorUpgrade_item_DEATH_PROTECTION.name=Death Protection Upgrade
 item.armorUpgrade_item_DIG_SPEED.name=Dig Speed Upgrade
 item.armorUpgrade_item_POTION_REMOVER.name=Potion Remover Upgrade
 item.armorUpgrade_item_EFFICIENCY.name=Efficiency Upgrade
-
+item.armorUpgrade_item_FLIGHT.name=Flight Upgrade
+item.armorUpgrade_item_NIGHT_VISION.name=Night Vision Upgrade
 
 item.manual_item.name=Armor Plus Manual
 item.energyCore_item.name=Energy Core
+item.alloy_item.name=Energium Alloy Ingot
 
 # Blocks
 tile.armorTable_block.name=Armor Table

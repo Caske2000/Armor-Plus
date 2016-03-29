@@ -1,0 +1,6 @@
+{
+  "parent": "armorplus:item/standard_item",
+  "textures": {
+    "layer0": "armorplus:items/armorUpgrade_item_NIGHT_VISION"
+  }
+}

@@ -74,13 +74,15 @@ public class ItemCustomArmor extends ItemArmor implements IEnergyContainerItem, 
     @Override
     public void onArmorTick(World world, EntityPlayer player, ItemStack itemStack)
     {
-        warning = NBTHelper.getInteger(itemStack, "ENERGY", 0) < 5000;
+        warning = NBTHelper.getInteger(itemStack, "ENERGY", 0) < 2000 + 500 * upgradeAmount;
+        if (warning)
+            return;
 
-        if (timer > 60)
+        if (timer > 40)
             timer = 0;
         tmpCost = 0;
-        if (((ItemCustomArmor) itemStack.getItem()).getEnergyStored(itemStack) < 500 * upgradeAmount)
-            return;
+        // Yes, I am checking for every kind of upgrade, but the difference between checking them all and only checking for armor specific once is too small
+        // On average this way of doing things is 4000 nanoseconds slower which I don't think is worth it
         for (String upgrade : Reference.Names.TYPES)
         {
             if (itemStack.getTagCompound().getBoolean(upgrade))
@@ -88,12 +90,14 @@ public class ItemCustomArmor extends ItemArmor implements IEnergyContainerItem, 
                 if (upgrade.equals(Reference.Names.TYPES[5]))
                     isEfficient = true;
                 else
-                    tmpCost += ArmorUpgradeHelper.onTick(upgrade, player);
+                    tmpCost += ArmorUpgradeHelper.onTick(upgrade, player, world);
             }
         }
+
         if (isEfficient)
             tmpCost -= tmpCost / 10.0F;
-        extractEnergy(itemStack, tmpCost, timer != 0);
+        if (timer == 0)
+            extractEnergy(itemStack, tmpCost, false);
         timer++;
         isEfficient = false;
     }

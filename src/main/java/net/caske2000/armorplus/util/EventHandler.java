@@ -1,11 +1,15 @@
 package net.caske2000.armorplus.util;
 
 import net.caske2000.armorplus.ArmorPlus;
+import net.caske2000.armorplus.items.ItemCustomArmor;
 import net.minecraft.event.ClickEvent;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.ChatStyle;
+import net.minecraftforge.fml.common.eventhandler.Event;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.gameevent.PlayerEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 
 /**
@@ -13,6 +17,8 @@ import net.minecraftforge.fml.common.gameevent.TickEvent;
  */
 public class EventHandler
 {
+    private boolean couldFly = false;
+
     @SubscribeEvent(priority= EventPriority.NORMAL, receiveCanceled=true)
     public void onEvent(TickEvent.PlayerTickEvent event)
     {
@@ -26,6 +32,26 @@ public class EventHandler
             versionWarningChatComponent.setChatStyle(clickableChatStyle);
             event.player.addChatMessage(versionWarningChatComponent);
             ArmorPlus.isWarnedVersionOutOfDate = true;
+        }
+
+        if (event.player.getCurrentArmor(2) != null)
+        {
+            if (event.player.getCurrentArmor(2).getItem() instanceof ItemCustomArmor)
+            {
+                if (event.player.getCurrentArmor(2).getTagCompound().getBoolean("FLIGHT"))
+                {
+                    event.player.capabilities.allowFlying = true;
+                    couldFly = true;
+                    return;
+                }
+            }
+        }
+
+        if (couldFly)
+        {
+            event.player.capabilities.allowFlying = false;
+            event.player.capabilities.isFlying = false;
+            couldFly = false;
         }
     }
 }

@@ -24,6 +24,7 @@ public final class Reference
         public static final String ARMOR_UPGRADE = "armorUpgrade_item_";
         public static final String MANUAL = "manual_item";
         public static final String ENERGY_CORE = "energyCore_item";
+        public static final String ALLOY = "alloy_item";
         
         public static final String IRON_HELMET = "customHelmetIron_item";
         public static final String IRON_CHESTPLATE = "customChestplateIron_item";
@@ -40,7 +41,7 @@ public final class Reference
         public static final String ALLOY_LEGGINGS = "customLeggingsAlloy_item";
         public static final String ALLOY_BOOTS = "customBootsAlloy_item";
         
-        public static final String[] TYPES = { "SPEED", "DEATH_PROTECTION", "FEEDER" , "DIG_SPEED", "POTION_REMOVER", "EFFICIENCY"};
+        public static final String[] TYPES = { "SPEED", "DEATH_PROTECTION", "FEEDER" , "DIG_SPEED", "POTION_REMOVER", "EFFICIENCY", "FLIGHT", "NIGHT_VISION"};
     }
 
     public static final class Numbers
@@ -51,8 +52,8 @@ public final class Reference
         public static final int CORE_MAX_ENERGY = 10000;
         public static final int CORE_MAX_TRANSFER = 100;
 
-        public static final int UPGRADE_ENERGY_COST = 10;
-        public static final short MAX_UPGRADE_AMOUNT = 1;
+        public static final byte UPGRADE_ENERGY_COST = 10;
+        public static final byte MAX_UPGRADE_AMOUNT = 1;
 
         public static final int ENERGY_PER_DAMAGE = 50;
         public static final int ARMOR_MAX_ENERGY = 10000;

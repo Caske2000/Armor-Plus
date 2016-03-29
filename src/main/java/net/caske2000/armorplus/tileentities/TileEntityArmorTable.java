@@ -152,28 +152,29 @@ public class TileEntityArmorTable extends TileEntityLockable implements ITickabl
             {
                 if (this.armorTableItemStacks[1].getItem() instanceof ItemCustomArmor && this.armorTableItemStacks[0].getItem() instanceof ItemArmorUpgrade)
                 {
-                    if (NBTHelper.getShort(this.armorTableItemStacks[1], "UPGRADE_AMOUNT", (short) 0) < NBTHelper.getShort(this.armorTableItemStacks[1], "MAX_UPGRADE_AMOUNT", Reference.Numbers.MAX_UPGRADE_AMOUNT))
+                    if (((ItemCustomArmor) this.armorTableItemStacks[1].getItem()).armorType == ((ItemArmorUpgrade) this.armorTableItemStacks[0].getItem()).getArmorType() || ((ItemArmorUpgrade) this.armorTableItemStacks[0].getItem()).getArmorType() == 4)
                     {
-                        if (!this.armorTableItemStacks[1].getTagCompound().hasKey(this.armorTableItemStacks[0].getUnlocalizedName().substring(23)))
+                        if (NBTHelper.getShort(this.armorTableItemStacks[1], "UPGRADE_AMOUNT", (short) 0) < NBTHelper.getShort(this.armorTableItemStacks[1], "MAX_UPGRADE_AMOUNT", Reference.Numbers.MAX_UPGRADE_AMOUNT))
                         {
-                            if (this.armorTableItemStacks[2] == null)
+                            if (!this.armorTableItemStacks[1].getTagCompound().hasKey(this.armorTableItemStacks[0].getUnlocalizedName().substring(23)))
                             {
-                                currentWorkTime++;
-                                if (currentWorkTime >= totalWorkTime)
+                                if (this.armorTableItemStacks[2] == null)
                                 {
-                                    currentWorkTime = 0;
-                                    this.itemDone();
-                                    this.markDirty();
+                                    currentWorkTime++;
+                                    if (currentWorkTime >= totalWorkTime)
+                                    {
+                                        currentWorkTime = 0;
+                                        this.itemDone();
+                                        this.markDirty();
+                                    }
+                                    return;
                                 }
-                            } else
-                                currentWorkTime = 0;
-                        } else
-                            currentWorkTime = 0;
-                    } else
-                        currentWorkTime = 0;
-                } else
-                    currentWorkTime = 0;
-            } else
+                            }
+                        }
+                    }
+                }
+            }
+            if (currentWorkTime != 0)
                 currentWorkTime = 0;
 
         } else if (currentWorkTime > 0)

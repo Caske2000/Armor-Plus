@@ -46,6 +46,7 @@ public class CommonProxy
         GameRegistry.addRecipe(new ItemStack(ModBlocks.armorCharger), new Object[]{"IXI", "LVL", "IXI", 'I', Blocks.redstone_block, 'V', ModItems.energyCore, 'X', Items.comparator, 'L', Blocks.redstone_torch});
 
         GameRegistry.addShapelessRecipe(new ItemStack(ModItems.manual), new Object[]{Items.book, Items.redstone, Blocks.lever});
+        GameRegistry.addShapelessRecipe(new ItemStack(ModItems.alloy), new Object[]{Blocks.obsidian, ModItems.energyCore});
         GameRegistry.addRecipe(new ItemStack(ModItems.energyCore), new Object[]{"IXI", "LVL", "IXI", 'I', Blocks.redstone_block, 'V', Items.comparator, 'X', Items.diamond, 'L', Blocks.redstone_torch});
 
         addRecipe(new ItemStack(ModItems.customBootsIron), new Object[]{"   ", "IVI", "I I", 'I', Items.iron_ingot, 'V', ModItems.energyCore});
@@ -59,10 +60,10 @@ public class CommonProxy
         addRecipe(new ItemStack(ModItems.customHelmetDiamond), new Object[]{"IVI", "I I", "   ", 'I', Items.diamond, 'V', ModItems.energyCore});
 
         // TODO Create Alloy
-        addRecipe(new ItemStack(ModItems.customBootsAlloy), new Object[]{"   ", "IVI", "I I", 'I', Blocks.obsidian, 'V', ModItems.energyCore});
-        addRecipe(new ItemStack(ModItems.customLeggingsAlloy), new Object[]{"IVI", "I I", "I I", 'I', Blocks.obsidian, 'V', ModItems.energyCore});
-        addRecipe(new ItemStack(ModItems.customChestplateAlloy), new Object[]{"I I", "IVI", "III", 'I', Blocks.obsidian, 'V', ModItems.energyCore});
-        addRecipe(new ItemStack(ModItems.customHelmetAlloy), new Object[]{"IVI", "I I", "   ", 'I', Blocks.obsidian, 'V', ModItems.energyCore});
+        addRecipe(new ItemStack(ModItems.customBootsAlloy), new Object[]{"   ", "IVI", "I I", 'I', ModItems.alloy, 'V', ModItems.energyCore});
+        addRecipe(new ItemStack(ModItems.customLeggingsAlloy), new Object[]{"IVI", "I I", "I I", 'I', ModItems.alloy, 'V', ModItems.energyCore});
+        addRecipe(new ItemStack(ModItems.customChestplateAlloy), new Object[]{"I I", "IVI", "III", 'I', ModItems.alloy, 'V', ModItems.energyCore});
+        addRecipe(new ItemStack(ModItems.customHelmetAlloy), new Object[]{"IVI", "I I", "   ", 'I', ModItems.alloy, 'V', ModItems.energyCore});
     }
 
     public void postInit(FMLPostInitializationEvent event)

@@ -20,10 +20,10 @@ Armor Plus by Caske2000 is licensed under a [Creative Commons Attribution 4.0 In
 
 Since this mod is based on the 'Minecraft Forge API' it's very simple to install.
 
-Step 1) Download [Forge](http://files.minecraftforge.net/) for Minecraft (I recommend to download the "Recommended" version) and install it. If you encounter a problem whilst trying installing Forge, just consult Google or YouTube, it has all of your answers ;)
+Step 1) Download [Forge](http://files.minecraftforge.net/) for Minecraft (I recommend to download the "Recommended" version) and install it. If you encounter a problem whilst trying to install Forge, just consult Google or YouTube, it has all of your answers ;)
 
 Step 2) Download the latest version of Armor Plus (see Links: CurseForge)
 
-Step 3) Just place the mod file (named [MC-VERSION]-[MOD-VERSION]) in the 'mods' folder of your .minecraft directory.
+Step 3) Just place the mod file in the 'mods' folder of your .minecraft directory.
 
 ~Caske2000

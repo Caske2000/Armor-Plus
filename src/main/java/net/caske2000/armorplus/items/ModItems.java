@@ -17,6 +17,9 @@ public final class ModItems
     public static Item armorUpgradeDigSpeed;
     public static Item armorUpgradePotionRemover;
     public static Item armorUpgradeEfficiency;
+    public static Item armorUpgradeFlight;
+    public static Item armorUpgradeNightVision;
+
 
     public static Item customBootsIron;
     public static Item customLeggingsIron;
@@ -35,6 +38,7 @@ public final class ModItems
 
     public static Item manual;
     public static Item energyCore;
+    public static Item alloy;
 
     private static final ItemArmor.ArmorMaterial IRONMat = EnumHelper.addArmorMaterial("IRONMat", "armorplus:ironmat", 15, new int[]{2, 6, 5, 2}, 9);
     private static final CustomArmorMaterial matIRON = new CustomArmorMaterial("iron", new int[] {1, 1, 0, 0});
@@ -46,12 +50,14 @@ public final class ModItems
     public static void createItems()
     {
         // DON'T FORGET TO ADD THE ITEM TO THE RENDERREGISTER!
-        GameRegistry.registerItem(armorUpgradeSpeed = new ItemArmorUpgrade((byte) 0), Reference.Names.ARMOR_UPGRADE + Reference.Names.TYPES[0]);
-        GameRegistry.registerItem(armorUpgradeDeathProtection = new ItemArmorUpgrade((byte) 1), Reference.Names.ARMOR_UPGRADE + Reference.Names.TYPES[1]);
-        GameRegistry.registerItem(armorUpgradeFeeder = new ItemArmorUpgrade((byte) 2), Reference.Names.ARMOR_UPGRADE + Reference.Names.TYPES[2]);
-        GameRegistry.registerItem(armorUpgradeDigSpeed = new ItemArmorUpgrade((byte) 3), Reference.Names.ARMOR_UPGRADE + Reference.Names.TYPES[3]);
-        GameRegistry.registerItem(armorUpgradePotionRemover = new ItemArmorUpgrade((byte) 4), Reference.Names.ARMOR_UPGRADE + Reference.Names.TYPES[4]);
-        GameRegistry.registerItem(armorUpgradeEfficiency = new ItemArmorUpgrade((byte) 5), Reference.Names.ARMOR_UPGRADE + Reference.Names.TYPES[5]);
+        GameRegistry.registerItem(armorUpgradeSpeed = new ItemArmorUpgrade((byte) 0, (byte) 3), Reference.Names.ARMOR_UPGRADE + Reference.Names.TYPES[0]);
+        GameRegistry.registerItem(armorUpgradeDeathProtection = new ItemArmorUpgrade((byte) 1, (byte) 1), Reference.Names.ARMOR_UPGRADE + Reference.Names.TYPES[1]);
+        GameRegistry.registerItem(armorUpgradeFeeder = new ItemArmorUpgrade((byte) 2, (byte) 0), Reference.Names.ARMOR_UPGRADE + Reference.Names.TYPES[2]);
+        GameRegistry.registerItem(armorUpgradeDigSpeed = new ItemArmorUpgrade((byte) 3, (byte) 1), Reference.Names.ARMOR_UPGRADE + Reference.Names.TYPES[3]);
+        GameRegistry.registerItem(armorUpgradePotionRemover = new ItemArmorUpgrade((byte) 4, (byte) 1), Reference.Names.ARMOR_UPGRADE + Reference.Names.TYPES[4]);
+        GameRegistry.registerItem(armorUpgradeEfficiency = new ItemArmorUpgrade((byte) 5, (byte) 4), Reference.Names.ARMOR_UPGRADE + Reference.Names.TYPES[5]);
+        GameRegistry.registerItem(armorUpgradeFlight = new ItemArmorUpgrade((byte) 6, (byte) 1), Reference.Names.ARMOR_UPGRADE + Reference.Names.TYPES[6]);
+        GameRegistry.registerItem(armorUpgradeNightVision = new ItemArmorUpgrade((byte) 7, (byte) 0), Reference.Names.ARMOR_UPGRADE + Reference.Names.TYPES[7]);
 
         GameRegistry.registerItem(customHelmetIron = new ItemCustomArmor(Reference.Names.IRON_HELMET, IRONMat, matIRON, 1, 0), Reference.Names.IRON_HELMET);
         GameRegistry.registerItem(customChestplateIron = new ItemCustomArmor(Reference.Names.IRON_CHESTPLATE, IRONMat, matIRON, 1, 1), Reference.Names.IRON_CHESTPLATE);
@@ -70,5 +76,6 @@ public final class ModItems
 
         GameRegistry.registerItem(manual = new ItemManual(), Reference.Names.MANUAL);
         GameRegistry.registerItem(energyCore = new ItemEnergyCore(), Reference.Names.ENERGY_CORE);
+        GameRegistry.registerItem(alloy = new Item().setUnlocalizedName(Reference.Names.ALLOY).setCreativeTab(CreativeTab.ARMOR_TAB), Reference.Names.ALLOY);
     }
 }

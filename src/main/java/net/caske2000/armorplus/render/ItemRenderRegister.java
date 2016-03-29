@@ -34,9 +34,12 @@ public final class ItemRenderRegister
         reg(ModItems.armorUpgradeDigSpeed);
         reg(ModItems.armorUpgradePotionRemover);
         reg(ModItems.armorUpgradeEfficiency);
+        reg(ModItems.armorUpgradeFlight);
+        reg(ModItems.armorUpgradeNightVision);
 
         reg (ModItems.manual);
         reg (ModItems.energyCore);
+        reg (ModItems.alloy);
     }
 
     private static void reg(Item item)
