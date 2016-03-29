@@ -7,8 +7,8 @@ Commutable Armor is this cool mod which adds in a special type of armor: Customi
 PS: Keep in mind that this mod is this in active development, so if there is anything you don't like, just leave me a message on the MinecraftForum (or another medium)
 
 ##Links
-- [Minecraft Forum Thread](http://www.minecraftforum.net/forums/mapping-and-modding/minecraft-mods/wip-mods/2645916-armor-plus-mod-v0-1)
-- [CurseForge](http://minecraft.curseforge.com/projects/armor-plus-mod)
+- [Minecraft Forum Thread](http://www.minecraftforum.net/forums/mapping-and-modding/minecraft-mods/wip-mods/2645916-commutable-armor-mod-v0-1-1)
+- [CurseForge](http://minecraft.curseforge.com/projects/commutable-armor-mod)
 
 ##License
 
