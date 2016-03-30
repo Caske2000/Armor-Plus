@@ -36,6 +36,9 @@ public final class ItemRenderRegister
         reg(ModItems.armorUpgradeEfficiency);
         reg(ModItems.armorUpgradeFlight);
         reg(ModItems.armorUpgradeNightVision);
+        reg(ModItems.armorUpgradeFireResistance);
+        reg(ModItems.armorUpgradeScuba);
+        reg(ModItems.armorUpgradeStrength);
 
         reg(ModItems.manual);
         reg(ModItems.energyCore);

@@ -13,6 +13,7 @@ import net.minecraft.util.ResourceLocation;
 public class CustomPotion extends Potion
 {
     public static final CustomPotion speedPotion = (CustomPotion) new CustomPotion(new ResourceLocation(Reference.MODID + ":speed"), false, 8171462).setPotionName(Reference.MODID + "potion.speedPotion").registerPotionAttributeModifier(SharedMonsterAttributes.movementSpeed, "91AEAA56-376B-4498-935B-2F7F68070635", 0.20000000298023224D, 2);
+    public static final CustomPotion strengthPotion = (CustomPotion) new CustomPotion(new ResourceLocation(Reference.MODID + ":strength"), false, 8171462).setPotionName(Reference.MODID + "potion.strengthPotion").registerPotionAttributeModifier(SharedMonsterAttributes.attackDamage, "648D7064-6A60-4F59-8ABE-C2C23A6DD7A9", 2.5D, 2);
 
     protected CustomPotion(ResourceLocation location, boolean badEffect, int potionColor)
     {

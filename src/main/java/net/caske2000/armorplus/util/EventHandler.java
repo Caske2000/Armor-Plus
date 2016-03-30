@@ -41,9 +41,16 @@ public class EventHandler
             {
                 if (event.player.getCurrentArmor(2).getTagCompound().getBoolean("FLIGHT"))
                 {
-                    event.player.capabilities.allowFlying = true;
-                    couldFly = true;
-                    return;
+                    if (event.player.getCurrentArmor(2).getTagCompound().getInteger("ENERGY") > 3000)
+                    {
+                        if (event.player.capabilities.allowFlying == false)
+                        {
+                            event.player.capabilities.allowFlying = true;
+                            couldFly = true;
+                            event.player.sendPlayerAbilities();
+                            return;
+                        }
+                    }
                 }
             }
         }
@@ -53,6 +60,7 @@ public class EventHandler
             event.player.capabilities.allowFlying = false;
             event.player.capabilities.isFlying = false;
             couldFly = false;
+            event.player.sendPlayerAbilities();
         }
     }
 }

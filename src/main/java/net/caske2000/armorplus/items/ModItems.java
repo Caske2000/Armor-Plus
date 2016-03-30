@@ -20,6 +20,9 @@ public final class ModItems
     public static Item armorUpgradeEfficiency;
     public static Item armorUpgradeFlight;
     public static Item armorUpgradeNightVision;
+    public static Item armorUpgradeFireResistance;
+    public static Item armorUpgradeScuba;
+    public static Item armorUpgradeStrength;
 
     public static Item customBootsIron;
     public static Item customLeggingsIron;
@@ -58,6 +61,9 @@ public final class ModItems
         GameRegistry.registerItem(armorUpgradeEfficiency = new ItemArmorUpgrade((byte) 5, (byte) 4), Reference.Names.ARMOR_UPGRADE + Reference.Names.TYPES[5]);
         GameRegistry.registerItem(armorUpgradeFlight = new ItemArmorUpgrade((byte) 6, (byte) 1), Reference.Names.ARMOR_UPGRADE + Reference.Names.TYPES[6]);
         GameRegistry.registerItem(armorUpgradeNightVision = new ItemArmorUpgrade((byte) 7, (byte) 0), Reference.Names.ARMOR_UPGRADE + Reference.Names.TYPES[7]);
+        GameRegistry.registerItem(armorUpgradeFireResistance = new ItemArmorUpgrade((byte) 8, (byte) 2), Reference.Names.ARMOR_UPGRADE + Reference.Names.TYPES[8]);
+        GameRegistry.registerItem(armorUpgradeScuba = new ItemArmorUpgrade((byte) 9, (byte) 0), Reference.Names.ARMOR_UPGRADE + Reference.Names.TYPES[9]);
+        GameRegistry.registerItem(armorUpgradeStrength = new ItemArmorUpgrade((byte) 10, (byte) 1), Reference.Names.ARMOR_UPGRADE + Reference.Names.TYPES[10]);
 
         GameRegistry.registerItem(customHelmetIron = new ItemCustomArmor(Reference.Names.IRON_HELMET, IRONMat, matIRON, 1, 0), Reference.Names.IRON_HELMET);
         GameRegistry.registerItem(customChestplateIron = new ItemCustomArmor(Reference.Names.IRON_CHESTPLATE, IRONMat, matIRON, 1, 1), Reference.Names.IRON_CHESTPLATE);

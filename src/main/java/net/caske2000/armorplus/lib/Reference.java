@@ -42,7 +42,7 @@ public final class Reference
         public static final String ALLOY_LEGGINGS = "customLeggingsAlloy_item";
         public static final String ALLOY_BOOTS = "customBootsAlloy_item";
         
-        public static final String[] TYPES = { "SPEED", "DEATH_PROTECTION", "FEEDER" , "DIG_SPEED", "POTION_REMOVER", "EFFICIENCY", "FLIGHT", "NIGHT_VISION"};
+        public static final String[] TYPES = { "SPEED", "DEATH_PROTECTION", "FEEDER" , "DIG_SPEED", "POTION_REMOVER", "EFFICIENCY", "FLIGHT", "NIGHT_VISION", "FIRE_RES", "SCUBA", "STRENGTH"};
     }
 
     public static final class Numbers

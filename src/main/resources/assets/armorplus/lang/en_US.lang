@@ -42,6 +42,9 @@ item.armorUpgrade_item_POTION_REMOVER.name=Potion Remover Upgrade
 item.armorUpgrade_item_EFFICIENCY.name=Efficiency Upgrade
 item.armorUpgrade_item_FLIGHT.name=Flight Upgrade
 item.armorUpgrade_item_NIGHT_VISION.name=Night Vision Upgrade
+item.armorUpgrade_item_FIRE_RES.name=Fire Resistance Upgrade
+item.armorUpgrade_item_SCUBA.name=Scuba Upgrade
+item.armorUpgrade_item_STRENGTH.name=Strength Upgrade
 
 item.manual_item.name=Commutable Armor Manual
 item.energyCore_item.name=Energy Core
