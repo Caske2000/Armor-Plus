@@ -4,7 +4,7 @@
 
 Commutable Armor is this cool mod which adds in a special type of armor: Customizable Armor. Some customizabilities are the Auto-Feeder, Death Protection and Bad Potion Remover. This all comes at a price of course: Redstone Flux.
 
-PS: Keep in mind that this mod is this in active development, so if there is anything you don't like, just leave me a message on the MinecraftForum (or another medium)
+PS: Keep in mind that this mod is this in active development, so if there is anything you don't like or want to see added, just leave me a message on the MinecraftForum (or another medium)
 
 ##Links
 - [Minecraft Forum Thread](http://www.minecraftforum.net/forums/mapping-and-modding/minecraft-mods/wip-mods/2645916-commutable-armor-mod-v0-1-1)
@@ -20,7 +20,7 @@ Commutable Armor by Caske2000 is licensed under a [Creative Commons Attribution 
 
 Since this mod is based on the 'Minecraft Forge API' it's very simple to install.
 
-Step 1) Download [Forge](http://files.minecraftforge.net/) for Minecraft (I recommend to download the "Recommended" version) and install it. If you encounter a problem whilst trying to install Forge, just consult Google or YouTube, it has all of your answers ;)
+Step 1) Download [Forge](http://files.minecraftforge.net/) for Minecraft version 1.10 (I recommend to download the "Recommended" version) and install it. If you encounter a problem whilst trying to install Forge, just consult Google or YouTube, it has all of your answers ;)
 
 Step 2) Download the latest version of Commutable Armor (see Links: CurseForge)
 
