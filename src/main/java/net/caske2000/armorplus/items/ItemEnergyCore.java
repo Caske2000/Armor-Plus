@@ -2,7 +2,7 @@ package net.caske2000.armorplus.items;
 
 import cofh.api.energy.ItemEnergyContainer;
 import net.caske2000.armorplus.lib.Reference;
-import net.caske2000.armorplus.lib.StringHelper;
+import net.caske2000.armorplus.util.StringHelper;
 import net.caske2000.armorplus.util.NBTHelper;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -19,8 +19,9 @@ class ItemEnergyCore extends ItemEnergyContainer
 {
     public ItemEnergyCore()
     {
-        super(Reference.Numbers.CORE_MAX_ENERGY, Reference.Numbers.CORE_MAX_TRANSFER);
-        setUnlocalizedName(Reference.Names.ENERGY_CORE);
+        super(Reference.CORE_MAX_ENERGY, Reference.CORE_MAX_TRANSFER);
+        setUnlocalizedName(Reference.ENERGY_CORE);
+        setRegistryName(Reference.ENERGY_CORE);
         setCreativeTab(CreativeTab.ARMOR_TAB);
         setMaxStackSize(1);
     }

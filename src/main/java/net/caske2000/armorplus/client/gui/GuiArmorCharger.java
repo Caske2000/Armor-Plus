@@ -14,7 +14,7 @@ import net.minecraft.util.ResourceLocation;
 /**
  * Created by Caske2000 on 26/03/2016.
  */
-class GuiArmorCharger extends GuiContainer
+public class GuiArmorCharger extends GuiContainer
 {
     private final IInventory playerInv;
     private final TileEntityArmorCharger te;
@@ -93,7 +93,7 @@ class GuiArmorCharger extends GuiContainer
         }
         GlStateManager.popMatrix();
 
-        String s = this.te.getDisplayName().getUnformattedText();
+        String s = this.te.getDisplayName().getFormattedText();
         this.fontRendererObj.drawString(s, 88 - this.fontRendererObj.getStringWidth(s) / 2, 6, 4210752);            //#404040
         this.fontRendererObj.drawString(this.playerInv.getDisplayName().getUnformattedText(), 8, 72, 4210752);      //#404040
     }

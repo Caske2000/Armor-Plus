@@ -49,9 +49,18 @@
     },
     {
       "name": "Custom Armor",
-      "displayItem": "customChestplateIron_item",
+      "displayItem": "customChestplateAlloy_item",
       "description": [
         "This is a special kind of armor which you can upgrade",
+        "in the Armor Table. It comes in three tiers:",
+        "Iron, Diamond and Alloy"
+      ]
+    },
+    {
+      "name": "Custom Sword",
+      "displayItem": "customSwordAlloy_item",
+      "description": [
+        "This is a special kind of sword which you can upgrade",
         "in the Armor Table. It comes in three tiers:",
         "Iron, Diamond and Alloy"
       ]

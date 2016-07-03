@@ -63,5 +63,4 @@ public class NBTHelper
         stack.getTagCompound().setInteger("ENERGY", energy);
         return stack;
     }
-
 }

@@ -2,7 +2,7 @@
   "parent":"armorplus:block/normal_armorCharger_block",
   "display": {
     "thirdperson": {
-      "rotation": [ 10, -45, 170 ],
+      "rotation": [ 15, 46, 195 ],
       "translation": [ 0, 1.5, -2.75 ],
       "scale": [ 0.375, 0.375, 0.375 ]
     }

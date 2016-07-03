@@ -14,6 +14,9 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntityLockable;
 import net.minecraft.util.*;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.text.TextComponentTranslation;
 
 import java.util.Random;
 
@@ -83,7 +86,7 @@ public class TileEntityArmorCharger extends TileEntityLockable implements IEnerg
     }
 
     @Override
-    public void writeToNBT(NBTTagCompound nbt)
+    public NBTTagCompound writeToNBT(NBTTagCompound nbt)
     {
         super.writeToNBT(nbt);
         nbt.setInteger("Energy", energy);
@@ -101,6 +104,8 @@ public class TileEntityArmorCharger extends TileEntityLockable implements IEnerg
 
         if (this.hasCustomName())
             nbt.setString("ArmorCharger", this.getCustomName());
+
+        return nbt;
     }
 
     @Override
@@ -288,9 +293,9 @@ public class TileEntityArmorCharger extends TileEntityLockable implements IEnerg
     }
 
     @Override
-    public IChatComponent getDisplayName()
+    public ITextComponent getDisplayName()
     {
-        return this.hasCustomName() ? new ChatComponentText(this.getName()) : new ChatComponentTranslation(this.getName());
+        return this.hasCustomName() ? new TextComponentString(this.getName()) : new TextComponentTranslation(this.getName());
     }
 
     @Override

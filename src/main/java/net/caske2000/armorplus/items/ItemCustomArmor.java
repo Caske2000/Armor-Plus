@@ -2,21 +2,23 @@ package net.caske2000.armorplus.items;
 
 import cofh.api.energy.IEnergyContainerItem;
 import net.caske2000.armorplus.lib.Reference;
-import net.caske2000.armorplus.lib.StringHelper;
+import net.caske2000.armorplus.util.StringHelper;
 import net.caske2000.armorplus.util.ArmorUpgradeHelper;
 import net.caske2000.armorplus.util.NBTHelper;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.enchantment.Enchantment;
+import net.minecraft.enchantment.EnchantmentDurability;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.MathHelper;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ISpecialArmor;
 
@@ -29,28 +31,28 @@ public class ItemCustomArmor extends ItemArmor implements IEnergyContainerItem, 
 {
     private final CustomArmorMaterial customMaterial;
     private final int maxEnergy, maxTransfer, energyPerDamage;
-    private final short upgradeAmount;
-    private final short maxUpgradeAmount;
+    private final byte upgradeAmount, maxUpgradeAmount;
     private int timer = 0;
     private int tmpCost;
     // TODO stop checking isEfficient every tick, save it in NBT
     private boolean warning, isEfficient = false;
 
-    public ItemCustomArmor(String unlocalizedName, ArmorMaterial material, CustomArmorMaterial customMaterial, int renderIndex, int armorType)
+    public ItemCustomArmor(String unlocalizedName, ArmorMaterial material, CustomArmorMaterial customMaterial, int renderIndex, EntityEquipmentSlot equipmentSlot)
     {
-        super(material, renderIndex, armorType);
+        super(material, renderIndex, equipmentSlot);
         setUnlocalizedName(unlocalizedName);
+        setRegistryName(unlocalizedName);
         setCreativeTab(CreativeTab.ARMOR_TAB);
         this.customMaterial = customMaterial;
-        this.maxEnergy = Reference.Numbers.ARMOR_MAX_ENERGY * customMaterial.getMaxEnergyMultiplier();
-        this.maxTransfer = Reference.Numbers.ARMOR_MAX_TRANSFER * customMaterial.getMaxTransferMultiplier();
-        this.energyPerDamage = Reference.Numbers.ENERGY_PER_DAMAGE + customMaterial.getExtraEnergyPerDamage();
-        this.maxUpgradeAmount = (short) (Reference.Numbers.MAX_UPGRADE_AMOUNT + customMaterial.getExtraMaxUpgradeAmount());
+        this.maxEnergy = Reference.ITEM_MAX_ENERGY * customMaterial.getMaxEnergyMultiplier();
+        this.maxTransfer = Reference.ITEM_MAX_TRANSFER * customMaterial.getMaxTransferMultiplier();
+        this.energyPerDamage = Reference.ENERGY_PER_DAMAGE + customMaterial.getExtraEnergyPerDamage();
+        this.maxUpgradeAmount = (byte) (Reference.MAX_UPGRADE_AMOUNT + customMaterial.getExtraMaxUpgradeAmount());
         this.upgradeAmount = 0;
         setMaxStackSize(1);
     }
 
-    @Override
+    /*@Override
     public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
     {
         String layer;
@@ -59,14 +61,12 @@ public class ItemCustomArmor extends ItemArmor implements IEnergyContainerItem, 
         else
             layer = "_layer_1.png";
         return Reference.MODID + ":models/armor/" + customMaterial.getName() + layer;
-    }
+    }*/
 
     @Override
     public void onCreated(ItemStack itemStack, World worldIn, EntityPlayer playerIn)
     {
         itemStack.setTagCompound(new NBTTagCompound());
-        for (String upgrade : Reference.Names.TYPES)
-            itemStack.getTagCompound().setBoolean(upgrade, false);
         itemStack.getTagCompound().setShort("UPGRADE_AMOUNT", upgradeAmount);
         itemStack.getTagCompound().setShort("MAX_UPGRADE_AMOUNT", maxUpgradeAmount);
     }
@@ -83,11 +83,11 @@ public class ItemCustomArmor extends ItemArmor implements IEnergyContainerItem, 
         tmpCost = 0;
         // Yes, I am checking for every kind of upgrade, but the difference between checking them all and only checking for armor specific once is too small
         // On average this way of doing things is 4000 nanoseconds slower which I don't think is worth it
-        for (String upgrade : Reference.Names.TYPES)
+        for (String upgrade : Reference.TYPES)
         {
             if (itemStack.getTagCompound().getBoolean(upgrade))
             {
-                if (upgrade.equals(Reference.Names.TYPES[5]))
+                if (upgrade.equals(Reference.TYPES[5]))
                     isEfficient = true;
                 else
                     tmpCost += ArmorUpgradeHelper.onTick(upgrade, player, world);
@@ -165,7 +165,6 @@ public class ItemCustomArmor extends ItemArmor implements IEnergyContainerItem, 
 
         if (StringHelper.isShiftKeyDown())
         {
-            list.add(StringHelper.localize("info.caske.armor." + customMaterial.getName()));
             list.add(StringHelper.localize("info.caske.energy") + ": " + stack.getTagCompound().getInteger("ENERGY") + " / " + maxEnergy + " RF");
             list.add(StringHelper.localize("info.caske.io") + ": " + maxTransfer + " RF/t");
             list.add(StringHelper.localize("info.caske.upgrade") + ": " + stack.getTagCompound().getShort("UPGRADE_AMOUNT") + "/" + stack.getTagCompound().getShort("MAX_UPGRADE_AMOUNT"));
@@ -204,15 +203,16 @@ public class ItemCustomArmor extends ItemArmor implements IEnergyContainerItem, 
 
     private int getAbsorptionRatio()
     {
+
         switch (armorType)
         {
-            case 0:
+            case HEAD:
                 return 3;
-            case 1:
+            case CHEST:
                 return 8;
-            case 2:
+            case LEGS:
                 return 6;
-            case 3:
+            case FEET:
                 return 3;
             default:
                 return 0;
@@ -227,7 +227,7 @@ public class ItemCustomArmor extends ItemArmor implements IEnergyContainerItem, 
 
     private int getEnergyPerDamage(ItemStack stack)
     {
-        int unbrLvl = MathHelper.clamp_int(EnchantmentHelper.getEnchantmentLevel(Enchantment.unbreaking.effectId, stack), 0, 4);
+        int unbrLvl = MathHelper.clamp_int(EnchantmentHelper.getEnchantmentLevel(Enchantment.getEnchantmentByID(34), stack), 0, 4);
         return energyPerDamage * (5 - unbrLvl) / 5;
     }
     // endregion

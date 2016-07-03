@@ -31,7 +31,7 @@ public class ArmorTableRenderer extends TileEntitySpecialRenderer
             GL11.glDisable(GL11.GL_LIGHTING);
             GlStateManager.translate(x + 0.5, y, z + 0.5);
             GL11.glRotatef(angle, 0, 1, 0);
-            Minecraft.getMinecraft().getRenderManager().renderEntityWithPosYaw(displayItem, 0, 0.2F, 0, 0.0F, 0.0F);
+            Minecraft.getMinecraft().getRenderManager().doRenderEntity(displayItem, 0, 0.2F, 0, 0.0F, 0.0F, true);
             GL11.glEnable(GL11.GL_LIGHTING);
 
             GlStateManager.popMatrix();

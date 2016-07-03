@@ -1,7 +1,7 @@
 package net.caske2000.armorplus.items;
 
 import net.caske2000.armorplus.lib.Reference;
-import net.caske2000.armorplus.lib.StringHelper;
+import net.caske2000.armorplus.util.StringHelper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -13,7 +13,7 @@ import java.util.List;
  */
 public class ItemArmorUpgrade extends Item
 {
-    private static final String[] types = Reference.Names.TYPES;
+    private static final String[] types = Reference.TYPES;
     private byte armorType;
 
     /**
@@ -24,7 +24,8 @@ public class ItemArmorUpgrade extends Item
     {
         super();
         this.armorType = armorType;
-        setUnlocalizedName(Reference.Names.ARMOR_UPGRADE + types[index]);
+        setUnlocalizedName(Reference.ARMOR_UPGRADE + types[index]);
+        setRegistryName(Reference.ARMOR_UPGRADE + types[index]);
         setCreativeTab(CreativeTab.ARMOR_TAB);
         setMaxStackSize(1);
     }

@@ -25,7 +25,7 @@ public class ArmorRecipe extends ShapedRecipes
             ItemStack itemstack1 = inv.getStackInSlot(i);
 
             if (itemstack1 != null && itemstack1.hasTagCompound())
-                itemstack.setTagCompound((NBTTagCompound) itemstack1.getTagCompound().copy());
+                itemstack.setTagCompound(itemstack1.getTagCompound().copy());
         }
 
         return itemstack;

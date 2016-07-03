@@ -22,7 +22,6 @@ public class ClientProxy extends CommonProxy
         super.preInit(event);
     }
 
-    @SuppressWarnings("unchecked")
     @Override
     public void init(FMLInitializationEvent event)
     {

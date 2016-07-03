@@ -2,7 +2,7 @@ package net.caske2000.armorplus.inventory;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
-import net.minecraft.inventory.ICrafting;
+import net.minecraft.inventory.IContainerListener;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
@@ -73,9 +73,9 @@ public class ContainerArmorCharger extends Container
     }
 
     @Override
-    public void onCraftGuiOpened(ICrafting listener)
+    public void addListener(IContainerListener listener)
     {
-        super.onCraftGuiOpened(listener);
+        super.addListener(listener);
         listener.sendAllWindowProperties(this, this.invCharger);
     }
 
@@ -83,11 +83,12 @@ public class ContainerArmorCharger extends Container
     public void detectAndSendChanges()
     {
         super.detectAndSendChanges();
+        for (int i = 0; i < this.listeners.size(); ++i) {
 
-        for (ICrafting icrafting : this.crafters)
-        {
+            IContainerListener icontainerlistener = this.listeners.get(i);
+
             if (this.energy != this.invCharger.getField(0))
-                icrafting.sendProgressBarUpdate(this, 0, this.invCharger.getField(0));
+                icontainerlistener.sendProgressBarUpdate(this, 0, this.invCharger.getField(0));
         }
 
         this.energy = this.invCharger.getField(0);

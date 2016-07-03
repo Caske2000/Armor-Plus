@@ -1,12 +1,12 @@
 package net.caske2000.armorplus.client.gui.manual;
 
+import com.mojang.realmsclient.gui.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.EnumChatFormatting;
 
 /**
  * Created by Caske2000 on 27/03/2016.
@@ -24,7 +24,7 @@ class GuiTexturedButton extends GuiButton
         // The size of a scale = 1 item is 15x15 pixels
         super(buttonId, x, y, 15 * scale, 15 * scale, "");
         this.itemStack = itemStack;
-        this.text = EnumChatFormatting.UNDERLINE + text;
+        this.text = ChatFormatting.UNDERLINE + text;
         this.stringWidth = Minecraft.getMinecraft().fontRendererObj.getStringWidth(text);
         this.scale = scale;
     }

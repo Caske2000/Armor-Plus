@@ -1,9 +1,9 @@
 package net.caske2000.armorplus.client.gui.manual;
 
+import com.mojang.realmsclient.gui.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.util.EnumChatFormatting;
 
 /**
  * Created by Caske2000 on 27/03/2016.
@@ -12,7 +12,7 @@ class GuiClickableLabel extends GuiButton
 {
     public GuiClickableLabel(int buttonId, int x, int y, String buttonText)
     {
-        super(buttonId, x, y, Minecraft.getMinecraft().fontRendererObj.getStringWidth(buttonText) + 10, 20,  EnumChatFormatting.UNDERLINE + buttonText);
+        super(buttonId, x, y, Minecraft.getMinecraft().fontRendererObj.getStringWidth(buttonText) + 10, 20,  ChatFormatting.UNDERLINE + buttonText);
     }
 
     @Override

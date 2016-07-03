@@ -13,11 +13,6 @@ info.caske.upgrade_2=This upgrade can be applied to leggings
 info.caske.upgrade_3=This upgrade can be applied to a pair of boots
 info.caske.upgrade_4=This upgrade can be applied to all types of armor
 
-# Tooltips
-info.caske.armor.iron=This sturdy piece of armor is made out of iron!
-info.caske.armor.diamond=This sturdy piece of armor is made out of diamond!
-info.caske.armor.alloy=This sturdy piece of armor is made out of alloy!
-
 # Items
 itemGroup.armorplus=Commutable Armor
 item.customHelmetIron_item.name=Custom Iron Helmet
@@ -32,6 +27,10 @@ item.customHelmetAlloy_item.name=Custom Alloy Helmet
 item.customChestplateAlloy_item.name=Custom Alloy Chestplate
 item.customLeggingsAlloy_item.name=Custom Alloy Leggings
 item.customBootsAlloy_item.name=Custom Alloy Boots
+
+item.customSwordIron_item.name=Custom Iron Sword
+item.customSwordDiamond_item.name=Custom Diamond Sword
+item.customSwordAlloy_item.name=Custom Alloy Sword
 
 item.armorUpgradeTemplate_item.name=Blank Upgrade Template
 item.armorUpgrade_item_SPEED.name=Speed Upgrade

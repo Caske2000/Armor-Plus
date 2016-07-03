@@ -4,7 +4,7 @@ import net.caske2000.armorplus.inventory.ContainerArmorTable;
 import net.caske2000.armorplus.items.ItemArmorUpgrade;
 import net.caske2000.armorplus.items.ItemCustomArmor;
 import net.caske2000.armorplus.lib.Reference;
-import net.caske2000.armorplus.util.ArmorTableRecipes;
+import net.caske2000.armorplus.lib.ArmorTableRecipes;
 import net.caske2000.armorplus.util.NBTHelper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -15,6 +15,9 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntityLockable;
 import net.minecraft.util.*;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.text.TextComponentTranslation;
 
 import java.util.Random;
 
@@ -152,9 +155,9 @@ public class TileEntityArmorTable extends TileEntityLockable implements ITickabl
             {
                 if (this.armorTableItemStacks[1].getItem() instanceof ItemCustomArmor && this.armorTableItemStacks[0].getItem() instanceof ItemArmorUpgrade)
                 {
-                    if (((ItemCustomArmor) this.armorTableItemStacks[1].getItem()).armorType == ((ItemArmorUpgrade) this.armorTableItemStacks[0].getItem()).getArmorType() || ((ItemArmorUpgrade) this.armorTableItemStacks[0].getItem()).getArmorType() == 4)
+                    if (((ItemCustomArmor) this.armorTableItemStacks[1].getItem()).getEquipmentSlot().getIndex() == ((ItemArmorUpgrade) this.armorTableItemStacks[0].getItem()).getArmorType() || ((ItemArmorUpgrade) this.armorTableItemStacks[0].getItem()).getArmorType() == 4)
                     {
-                        if (NBTHelper.getShort(this.armorTableItemStacks[1], "UPGRADE_AMOUNT", (short) 0) < NBTHelper.getShort(this.armorTableItemStacks[1], "MAX_UPGRADE_AMOUNT", Reference.Numbers.MAX_UPGRADE_AMOUNT))
+                        if (NBTHelper.getShort(this.armorTableItemStacks[1], "UPGRADE_AMOUNT", (short) 0) < NBTHelper.getShort(this.armorTableItemStacks[1], "MAX_UPGRADE_AMOUNT", Reference.MAX_UPGRADE_AMOUNT))
                         {
                             if (!this.armorTableItemStacks[1].getTagCompound().hasKey(this.armorTableItemStacks[0].getUnlocalizedName().substring(23)))
                             {
@@ -242,13 +245,13 @@ public class TileEntityArmorTable extends TileEntityLockable implements ITickabl
     }
 
     @Override
-    public IChatComponent getDisplayName()
+    public ITextComponent getDisplayName()
     {
-        return this.hasCustomName() ? new ChatComponentText(this.getName()) : new ChatComponentTranslation(this.getName());
+        return this.hasCustomName() ? new TextComponentString(this.getName()) : new TextComponentTranslation(this.getName());
     }
 
     @Override
-    public void writeToNBT(NBTTagCompound nbt)
+    public NBTTagCompound writeToNBT(NBTTagCompound nbt)
     {
         super.writeToNBT(nbt);
         nbt.setShort("workTime", currentWorkTime);
@@ -269,8 +272,9 @@ public class TileEntityArmorTable extends TileEntityLockable implements ITickabl
 
         if (this.hasCustomName())
             nbt.setString("ArmorTable", this.getCustomName());
-    }
 
+        return nbt;
+    }
 
     @Override
     public void readFromNBT(NBTTagCompound nbt)

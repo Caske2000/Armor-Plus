@@ -34,8 +34,8 @@ class CustomArmorMaterial
         return energyData[2];
     }
 
-    public short getExtraMaxUpgradeAmount()
+    public byte getExtraMaxUpgradeAmount()
     {
-        return (short) energyData[3];
+        return (byte) energyData[3];
     }
 }

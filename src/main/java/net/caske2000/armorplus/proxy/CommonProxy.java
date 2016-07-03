@@ -3,12 +3,12 @@ package net.caske2000.armorplus.proxy;
 import com.google.common.collect.Maps;
 import net.caske2000.armorplus.ArmorPlus;
 import net.caske2000.armorplus.blocks.ModBlocks;
-import net.caske2000.armorplus.client.gui.GuiHandler;
+import net.caske2000.armorplus.handler.GuiHandler;
 import net.caske2000.armorplus.items.ArmorRecipe;
 import net.caske2000.armorplus.items.ModItems;
 import net.caske2000.armorplus.tileentities.TileEntityArmorCharger;
 import net.caske2000.armorplus.tileentities.TileEntityArmorTable;
-import net.caske2000.armorplus.util.EventHandler;
+import net.caske2000.armorplus.handler.EventHandler;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -20,6 +20,7 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.oredict.RecipeSorter;
 
 import java.util.Map;
 
@@ -42,38 +43,43 @@ public class CommonProxy
         GameRegistry.registerTileEntity(TileEntityArmorCharger.class, "armorCharger_tile_entity");
 
         // Crafting recipes
-        GameRegistry.addRecipe(new ItemStack(ModBlocks.armorTable), new Object[]{"IXI", "LVL", "IXI", 'I', Blocks.redstone_block, 'V', ModItems.energyCore, 'X', Items.iron_chestplate, 'L', Blocks.redstone_torch});
-        GameRegistry.addRecipe(new ItemStack(ModBlocks.armorCharger), new Object[]{"IXI", "LVL", "IXI", 'I', Blocks.redstone_block, 'V', ModItems.energyCore, 'X', Items.comparator, 'L', Blocks.redstone_torch});
+        RecipeSorter.register("armorplus:armorrecipe", ArmorRecipe.class, RecipeSorter.Category.SHAPED, "after:minecraft:shaped");
 
-        GameRegistry.addShapelessRecipe(new ItemStack(ModItems.manual), new Object[]{Items.book, Items.redstone, Blocks.lever});
-        GameRegistry.addShapelessRecipe(new ItemStack(ModItems.alloy), new Object[]{Blocks.obsidian, ModItems.energyCore});
-        GameRegistry.addRecipe(new ItemStack(ModItems.energyCore), new Object[]{"IXI", "LVL", "IXI", 'I', Blocks.redstone_block, 'V', Items.comparator, 'X', Items.diamond, 'L', Blocks.redstone_torch});
-        GameRegistry.addShapelessRecipe(new ItemStack(ModItems.armorUpgradeTemplate), new Object[]{ModItems.energyCore, Items.book, Items.diamond});
+        GameRegistry.addRecipe(new ItemStack(ModBlocks.armorTable), "IXI", "LVL", "IXI", 'I', Blocks.REDSTONE_BLOCK, 'V', ModItems.energyCore, 'X', Items.IRON_CHESTPLATE, 'L', Blocks.REDSTONE_TORCH);
+        GameRegistry.addRecipe(new ItemStack(ModBlocks.armorCharger), "IXI", "LVL", "IXI", 'I', Blocks.REDSTONE_BLOCK, 'V', ModItems.energyCore, 'X', Items.COMPARATOR, 'L', Blocks.REDSTONE_TORCH);
 
-        GameRegistry.addShapelessRecipe(new ItemStack(ModItems.armorUpgradeSpeed), new Object[]{ModItems.armorUpgradeTemplate, Items.diamond, Items.sugar});
-        GameRegistry.addShapelessRecipe(new ItemStack(ModItems.armorUpgradeDeathProtection), new Object[]{ModItems.armorUpgradeTemplate, Items.diamond, Items.diamond_hoe});
-        GameRegistry.addShapelessRecipe(new ItemStack(ModItems.armorUpgradeFeeder), new Object[]{ModItems.armorUpgradeTemplate, Items.diamond, Items.golden_apple});
-        GameRegistry.addShapelessRecipe(new ItemStack(ModItems.armorUpgradeDigSpeed), new Object[]{ModItems.armorUpgradeTemplate, Items.diamond, Items.diamond_pickaxe});
-        GameRegistry.addShapelessRecipe(new ItemStack(ModItems.armorUpgradePotionRemover), new Object[]{ModItems.armorUpgradeTemplate, Items.diamond, Items.ghast_tear});
-        GameRegistry.addShapelessRecipe(new ItemStack(ModItems.armorUpgradeEfficiency), new Object[]{ModItems.armorUpgradeTemplate, Items.diamond, Blocks.redstone_block, Items.gold_ingot});
-        GameRegistry.addShapelessRecipe(new ItemStack(ModItems.armorUpgradeFlight), new Object[]{ModItems.armorUpgradeTemplate, Items.diamond, Items.golden_apple, Blocks.diamond_block});
-        GameRegistry.addShapelessRecipe(new ItemStack(ModItems.armorUpgradeNightVision), new Object[]{ModItems.armorUpgradeTemplate, Items.diamond, Items.golden_carrot});
+        GameRegistry.addShapelessRecipe(new ItemStack(ModItems.manual), Items.BOOK, Items.REDSTONE, Blocks.LEVER);
+        GameRegistry.addShapelessRecipe(new ItemStack(ModItems.alloy), Blocks.OBSIDIAN, ModItems.energyCore);
+        GameRegistry.addRecipe(new ItemStack(ModItems.energyCore), "IXI", "LVL", "IXI", 'I', Blocks.REDSTONE_BLOCK, 'V', Items.COMPARATOR, 'X', Items.DIAMOND, 'L', Blocks.REDSTONE_TORCH);
+        GameRegistry.addShapelessRecipe(new ItemStack(ModItems.armorUpgradeTemplate), ModItems.energyCore, Items.BOOK, Items.DIAMOND);
 
-        addRecipe(new ItemStack(ModItems.customBootsIron), new Object[]{"   ", "IVI", "I I", 'I', Items.iron_ingot, 'V', ModItems.energyCore});
-        addRecipe(new ItemStack(ModItems.customLeggingsIron), new Object[]{"IVI", "I I", "I I", 'I', Items.iron_ingot, 'V', ModItems.energyCore});
-        addRecipe(new ItemStack(ModItems.customChestplateIron), new Object[]{"I I", "IVI", "III", 'I', Items.iron_ingot, 'V', ModItems.energyCore});
-        addRecipe(new ItemStack(ModItems.customHelmetIron), new Object[]{"IVI", "I I", "   ", 'I', Items.iron_ingot, 'V', ModItems.energyCore});
+        GameRegistry.addShapelessRecipe(new ItemStack(ModItems.armorUpgradeSpeed), ModItems.armorUpgradeTemplate, Items.DIAMOND, Items.SUGAR);
+        GameRegistry.addShapelessRecipe(new ItemStack(ModItems.armorUpgradeDeathProtection), ModItems.armorUpgradeTemplate, Items.DIAMOND, Items.DIAMOND_HOE);
+        GameRegistry.addShapelessRecipe(new ItemStack(ModItems.armorUpgradeFeeder), ModItems.armorUpgradeTemplate, Items.DIAMOND, Items.GOLDEN_APPLE);
+        GameRegistry.addShapelessRecipe(new ItemStack(ModItems.armorUpgradeDigSpeed), ModItems.armorUpgradeTemplate, Items.DIAMOND, Items.DIAMOND_PICKAXE);
+        GameRegistry.addShapelessRecipe(new ItemStack(ModItems.armorUpgradePotionRemover), ModItems.armorUpgradeTemplate, Items.DIAMOND, Items.GHAST_TEAR);
+        GameRegistry.addShapelessRecipe(new ItemStack(ModItems.armorUpgradeEfficiency), ModItems.armorUpgradeTemplate, Items.DIAMOND, Blocks.REDSTONE_BLOCK, Items.GOLD_INGOT);
+        GameRegistry.addShapelessRecipe(new ItemStack(ModItems.armorUpgradeFlight), ModItems.armorUpgradeTemplate, Items.DIAMOND, Items.GOLDEN_APPLE, Blocks.DIAMOND_BLOCK);
+        GameRegistry.addShapelessRecipe(new ItemStack(ModItems.armorUpgradeNightVision), ModItems.armorUpgradeTemplate, Items.DIAMOND, Items.GOLDEN_CARROT);
+        GameRegistry.addShapelessRecipe(new ItemStack(ModItems.armorUpgradeFireResistance), ModItems.armorUpgradeTemplate, Items.DIAMOND, Items.BLAZE_ROD);
+        GameRegistry.addShapelessRecipe(new ItemStack(ModItems.armorUpgradeScuba), ModItems.armorUpgradeTemplate, Items.DIAMOND, Items.REEDS);
+        GameRegistry.addShapelessRecipe(new ItemStack(ModItems.armorUpgradeStrength), ModItems.armorUpgradeTemplate, Items.DIAMOND, Items.BLAZE_POWDER);
 
-        addRecipe(new ItemStack(ModItems.customBootsDiamond), new Object[]{"   ", "IVI", "I I", 'I', Items.diamond, 'V', ModItems.energyCore});
-        addRecipe(new ItemStack(ModItems.customLeggingsDiamond), new Object[]{"IVI", "I I", "I I", 'I', Items.diamond, 'V', ModItems.energyCore});
-        addRecipe(new ItemStack(ModItems.customChestplateDiamond), new Object[]{"I I", "IVI", "III", 'I', Items.diamond, 'V', ModItems.energyCore});
-        addRecipe(new ItemStack(ModItems.customHelmetDiamond), new Object[]{"IVI", "I I", "   ", 'I', Items.diamond, 'V', ModItems.energyCore});
+        addRecipe(new ItemStack(ModItems.customBootsIron), "   ", "IVI", "I I", 'I', Items.IRON_INGOT, 'V', ModItems.energyCore);
+        addRecipe(new ItemStack(ModItems.customLeggingsIron), "IVI", "I I", "I I", 'I', Items.IRON_INGOT, 'V', ModItems.energyCore);
+        addRecipe(new ItemStack(ModItems.customChestplateIron), "I I", "IVI", "III", 'I', Items.IRON_INGOT, 'V', ModItems.energyCore);
+        addRecipe(new ItemStack(ModItems.customHelmetIron), "IVI", "I I", "   ", 'I', Items.IRON_INGOT, 'V', ModItems.energyCore);
+
+        addRecipe(new ItemStack(ModItems.customBootsDiamond), "   ", "IVI", "I I", 'I', Items.DIAMOND, 'V', ModItems.energyCore);
+        addRecipe(new ItemStack(ModItems.customLeggingsDiamond), "IVI", "I I", "I I", 'I', Items.DIAMOND, 'V', ModItems.energyCore);
+        addRecipe(new ItemStack(ModItems.customChestplateDiamond), "I I", "IVI", "III", 'I', Items.DIAMOND, 'V', ModItems.energyCore);
+        addRecipe(new ItemStack(ModItems.customHelmetDiamond), "IVI", "I I", "   ", 'I', Items.DIAMOND, 'V', ModItems.energyCore);
 
         // TODO Create Alloy
-        addRecipe(new ItemStack(ModItems.customBootsAlloy), new Object[]{"   ", "IVI", "I I", 'I', ModItems.alloy, 'V', ModItems.energyCore});
-        addRecipe(new ItemStack(ModItems.customLeggingsAlloy), new Object[]{"IVI", "I I", "I I", 'I', ModItems.alloy, 'V', ModItems.energyCore});
-        addRecipe(new ItemStack(ModItems.customChestplateAlloy), new Object[]{"I I", "IVI", "III", 'I', ModItems.alloy, 'V', ModItems.energyCore});
-        addRecipe(new ItemStack(ModItems.customHelmetAlloy), new Object[]{"IVI", "I I", "   ", 'I', ModItems.alloy, 'V', ModItems.energyCore});
+        addRecipe(new ItemStack(ModItems.customBootsAlloy), "   ", "IVI", "I I", 'I', ModItems.alloy, 'V', ModItems.energyCore);
+        addRecipe(new ItemStack(ModItems.customLeggingsAlloy), "IVI", "I I", "I I", 'I', ModItems.alloy, 'V', ModItems.energyCore);
+        addRecipe(new ItemStack(ModItems.customChestplateAlloy), "I I", "IVI", "III", 'I', ModItems.alloy, 'V', ModItems.energyCore);
+        addRecipe(new ItemStack(ModItems.customHelmetAlloy), "IVI", "I I", "   ", 'I', ModItems.alloy, 'V', ModItems.energyCore);
     }
 
     public void postInit(FMLPostInitializationEvent event)
@@ -111,7 +117,7 @@ public class CommonProxy
 
         Map<Character, ItemStack> map;
 
-        for (map = Maps.<Character, ItemStack>newHashMap(); i < recipeComponents.length; i += 2)
+        for (map = Maps.newHashMap(); i < recipeComponents.length; i += 2)
         {
             Character character = (Character)recipeComponents[i];
             ItemStack itemstack = null;

@@ -26,7 +26,7 @@ public class HudHandler extends GuiScreen
             ItemStack stack;
             for (int i = 0; i < 4; i++)
             {
-                stack = mc.thePlayer.getCurrentArmor(i);
+                stack = mc.thePlayer.inventory.armorItemInSlot(i);
                 if (stack != null)
                 {
                     if (stack.getItem() instanceof ItemCustomArmor)
@@ -52,7 +52,7 @@ public class HudHandler extends GuiScreen
     @SubscribeEvent
     public void RenderGameOverlayEvent(RenderGameOverlayEvent event)
     {
-        if (event.type == RenderGameOverlayEvent.ElementType.HOTBAR)
+        if (event.getType() == RenderGameOverlayEvent.ElementType.HOTBAR)
             checkHUD();
     }
 }

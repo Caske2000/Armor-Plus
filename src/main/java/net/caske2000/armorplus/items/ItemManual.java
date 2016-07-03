@@ -1,12 +1,15 @@
 package net.caske2000.armorplus.items;
 
 import net.caske2000.armorplus.ArmorPlus;
-import net.caske2000.armorplus.client.gui.GuiHandler;
+import net.caske2000.armorplus.handler.GuiHandler;
 import net.caske2000.armorplus.lib.Reference;
-import net.caske2000.armorplus.lib.StringHelper;
+import net.caske2000.armorplus.util.StringHelper;
+import net.minecraft.block.BlockStairs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
 
 import java.util.List;
@@ -19,7 +22,8 @@ class ItemManual extends Item
     public ItemManual()
     {
         super();
-        setUnlocalizedName(Reference.Names.MANUAL);
+        setUnlocalizedName(Reference.MANUAL);
+        setRegistryName(Reference.MANUAL);
         setCreativeTab(CreativeTab.ARMOR_TAB);
         setMaxStackSize(1);
     }
@@ -31,10 +35,10 @@ class ItemManual extends Item
     }
 
     @Override
-    public ItemStack onItemRightClick(ItemStack itemStack, World world, EntityPlayer player)
+    public ActionResult<ItemStack> onItemRightClick(ItemStack itemStack, World world, EntityPlayer player, EnumHand hand)
     {
         if (world.isRemote)
             player.openGui(ArmorPlus.instance, GuiHandler.MANUAL_GUI, player.worldObj, (int) player.posX, (int) player.posY, (int) player.posZ);
-        return super.onItemRightClick(itemStack, world, player);
+        return super.onItemRightClick(itemStack, world, player, hand);
     }
 }

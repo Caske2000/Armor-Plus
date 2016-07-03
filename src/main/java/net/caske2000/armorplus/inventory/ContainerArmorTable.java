@@ -139,9 +139,9 @@ public class ContainerArmorTable extends Container
     }
 
     @Override
-    public void onCraftGuiOpened(ICrafting listener)
+    public void addListener(IContainerListener listener)
     {
-        super.onCraftGuiOpened(listener);
+        super.addListener(listener);
         listener.sendAllWindowProperties(this, this.invTable);
     }
 
@@ -150,13 +150,15 @@ public class ContainerArmorTable extends Container
     {
         super.detectAndSendChanges();
 
-        for (ICrafting icrafting : this.crafters)
+        for (int i = 0; i < this.listeners.size(); ++i)
         {
+            IContainerListener icontainerlistener = this.listeners.get(i);
+
             if (this.currentWorkTime != this.invTable.getField(0))
-                icrafting.sendProgressBarUpdate(this, 0, this.invTable.getField(0));
+                icontainerlistener.sendProgressBarUpdate(this, 0, this.invTable.getField(0));
 
             if (this.totalWorkTime != this.invTable.getField(1))
-                icrafting.sendProgressBarUpdate(this, 1, this.invTable.getField(1));
+                icontainerlistener.sendProgressBarUpdate(this, 1, this.invTable.getField(1));
         }
 
         this.currentWorkTime = this.invTable.getField(0);
