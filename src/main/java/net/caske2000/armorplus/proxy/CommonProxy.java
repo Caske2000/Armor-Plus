@@ -3,12 +3,12 @@ package net.caske2000.armorplus.proxy;
 import com.google.common.collect.Maps;
 import net.caske2000.armorplus.ArmorPlus;
 import net.caske2000.armorplus.blocks.ModBlocks;
+import net.caske2000.armorplus.handler.EventHandler;
 import net.caske2000.armorplus.handler.GuiHandler;
 import net.caske2000.armorplus.items.ArmorRecipe;
 import net.caske2000.armorplus.items.ModItems;
 import net.caske2000.armorplus.tileentities.TileEntityArmorCharger;
 import net.caske2000.armorplus.tileentities.TileEntityArmorTable;
-import net.caske2000.armorplus.handler.EventHandler;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -27,16 +27,13 @@ import java.util.Map;
 /**
  * Created by Caske2000 on 5/02/2016.
  */
-public class CommonProxy
-{
-    public void preInit(FMLPreInitializationEvent event)
-    {
+public class CommonProxy {
+    public void preInit(FMLPreInitializationEvent event) {
         ModItems.createItems();
         ModBlocks.createBlocks();
     }
 
-    public void init(FMLInitializationEvent event)
-    {
+    public void init(FMLInitializationEvent event) {
         MinecraftForge.EVENT_BUS.register(new EventHandler());
         NetworkRegistry.INSTANCE.registerGuiHandler(ArmorPlus.instance, new GuiHandler());
         GameRegistry.registerTileEntity(TileEntityArmorTable.class, "armorTable_tile_entity");
@@ -82,33 +79,26 @@ public class CommonProxy
         addRecipe(new ItemStack(ModItems.customHelmetAlloy), "IVI", "I I", "   ", 'I', ModItems.alloy, 'V', ModItems.energyCore);
     }
 
-    public void postInit(FMLPostInitializationEvent event)
-    {
+    public void postInit(FMLPostInitializationEvent event) {
     }
 
-    private void addRecipe(ItemStack stack, Object... recipeComponents)
-    {
+    private void addRecipe(ItemStack stack, Object... recipeComponents) {
         String s = "";
         int i = 0;
         int j = 0;
         int k = 0;
 
-        if (recipeComponents[i] instanceof String[])
-        {
-            String[] astring = (String[])(recipeComponents[i++]);
+        if (recipeComponents[i] instanceof String[]) {
+            String[] astring = (String[]) (recipeComponents[i++]);
 
-            for (String s2 : astring)
-            {
+            for (String s2 : astring) {
                 ++k;
                 j = s2.length();
                 s = s + s2;
             }
-        }
-        else
-        {
-            while (recipeComponents[i] instanceof String)
-            {
-                String s1 = (String)recipeComponents[i++];
+        } else {
+            while (recipeComponents[i] instanceof String) {
+                String s1 = (String) recipeComponents[i++];
                 ++k;
                 j = s1.length();
                 s = s + s1;
@@ -117,25 +107,23 @@ public class CommonProxy
 
         Map<Character, ItemStack> map;
 
-        for (map = Maps.newHashMap(); i < recipeComponents.length; i += 2)
-        {
-            Character character = (Character)recipeComponents[i];
+        for (map = Maps.newHashMap(); i < recipeComponents.length; i += 2) {
+            Character character = (Character) recipeComponents[i];
             ItemStack itemstack = null;
 
             if (recipeComponents[i + 1] instanceof Item)
-                itemstack = new ItemStack((Item)recipeComponents[i + 1]);
+                itemstack = new ItemStack((Item) recipeComponents[i + 1]);
             else if (recipeComponents[i + 1] instanceof Block)
-                itemstack = new ItemStack((Block)recipeComponents[i + 1], 1, 32767);
+                itemstack = new ItemStack((Block) recipeComponents[i + 1], 1, 32767);
             else if (recipeComponents[i + 1] instanceof ItemStack)
-                itemstack = (ItemStack)recipeComponents[i + 1];
+                itemstack = (ItemStack) recipeComponents[i + 1];
 
             map.put(character, itemstack);
         }
 
         ItemStack[] aitemstack = new ItemStack[j * k];
 
-        for (int i1 = 0; i1 < j * k; ++i1)
-        {
+        for (int i1 = 0; i1 < j * k; ++i1) {
             char c0 = s.charAt(i1);
 
             if (map.containsKey(c0))

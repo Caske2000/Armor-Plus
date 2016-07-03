@@ -14,17 +14,14 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 /**
  * Created by Caske2000 on 5/02/2016.
  */
-public class ClientProxy extends CommonProxy
-{
+public class ClientProxy extends CommonProxy {
     @Override
-    public void preInit(FMLPreInitializationEvent event)
-    {
+    public void preInit(FMLPreInitializationEvent event) {
         super.preInit(event);
     }
 
     @Override
-    public void init(FMLInitializationEvent event)
-    {
+    public void init(FMLInitializationEvent event) {
         super.init(event);
 
         MinecraftForge.EVENT_BUS.register(HudHandler.instance);
@@ -37,8 +34,7 @@ public class ClientProxy extends CommonProxy
     }
 
     @Override
-    public void postInit(FMLPostInitializationEvent event)
-    {
+    public void postInit(FMLPostInitializationEvent event) {
         ArmorPlus.versionChecker = new VersionChecker();
         Thread versionCheckThread = new Thread(ArmorPlus.versionChecker, "Version Check");
         versionCheckThread.start();

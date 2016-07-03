@@ -10,46 +10,31 @@ import java.net.URL;
 /**
  * Created by Caske2000 on 28/03/2016.
  */
-public class VersionChecker implements Runnable
-{
+public class VersionChecker implements Runnable {
     private static boolean isLatestVersion = false;
     private static String latestVersion = "";
 
+    public static boolean isLatestVersion() {
+        return isLatestVersion;
+    }
+
     @Override
-    public void run()
-    {
+    public void run() {
         InputStream in = null;
-        try
-        {
-            in = new URL("https://raw.githubusercontent.com/Caske2000/Armor-Plus/master/MOD.VERSION").openStream();
-        } catch (Exception e)
-        {
+        try {
+            in = new URL("https://raw.githubusercontent.com/Caske2000/Commutable-Armor/1.10/MOD.VERSION").openStream();
+        } catch (Exception e) {
             e.printStackTrace();
         }
-        try
-        {
+        try {
             latestVersion = IOUtils.readLines(in).get(0);
-        }
-        catch (IOException e)
-        {
+        } catch (IOException e) {
             e.printStackTrace();
-        }
-        finally
-        {
+        } finally {
             IOUtils.closeQuietly(in);
         }
         System.out.println("Latest mod version = " + latestVersion);
         isLatestVersion = Reference.VERSION.equals(latestVersion);
         System.out.println("Are you running latest version = " + isLatestVersion);
-    }
-
-    public static String getLatestVersion()
-    {
-        return latestVersion;
-    }
-
-    public static boolean isLatestVersion()
-    {
-        return isLatestVersion;
     }
 }

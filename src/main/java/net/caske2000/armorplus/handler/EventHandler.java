@@ -4,18 +4,12 @@ import com.mojang.realmsclient.gui.ChatFormatting;
 import net.caske2000.armorplus.ArmorPlus;
 import net.caske2000.armorplus.items.ItemCustomArmor;
 import net.caske2000.armorplus.util.VersionChecker;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.Style;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.event.ClickEvent;
-import net.minecraftforge.fml.common.eventhandler.Event;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.common.gameevent.PlayerEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
-
-import java.time.format.TextStyle;
-import java.util.List;
 
 /**
  * Created by Caske2000 on 28/03/2016.
@@ -34,7 +28,7 @@ public class EventHandler {
             event.player.addChatMessage(versionWarningChatComponent);
             ArmorPlus.isWarnedVersionOutOfDate = true;
         }
-        
+
         if (event.player.inventory.armorItemInSlot(2) != null) {
             if (event.player.inventory.armorItemInSlot(2).getItem() instanceof ItemCustomArmor) {
                 if (event.player.inventory.armorItemInSlot(2).getTagCompound().getBoolean("FLIGHT")) {

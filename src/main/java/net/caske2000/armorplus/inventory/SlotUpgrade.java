@@ -8,16 +8,13 @@ import net.minecraft.item.ItemStack;
 /**
  * Created by Caske2000 on 6-3-2016.
  */
-class SlotUpgrade extends Slot
-{
-    public SlotUpgrade(IInventory inv, int index, int xPos, int yPos)
-    {
+class SlotUpgrade extends Slot {
+    public SlotUpgrade(IInventory inv, int index, int xPos, int yPos) {
         super(inv, index, xPos, yPos);
     }
 
     @Override
-    public boolean isItemValid(ItemStack stack)
-    {
+    public boolean isItemValid(ItemStack stack) {
         return stack.getItem() instanceof ItemArmorUpgrade;
     }
 }

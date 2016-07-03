@@ -1,8 +1,8 @@
 package net.caske2000.armorplus.tileentities;
 
-import buildcraft.api.transport.IPipeConnection;
-import buildcraft.api.transport.IPipeTile;
-import cofh.api.energy.*;
+import cofh.api.energy.IEnergyContainerItem;
+import cofh.api.energy.IEnergyProvider;
+import cofh.api.energy.IEnergyReceiver;
 import net.caske2000.armorplus.inventory.ContainerArmorCharger;
 import net.caske2000.armorplus.lib.Reference;
 import net.minecraft.entity.player.EntityPlayer;
@@ -13,7 +13,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntityLockable;
-import net.minecraft.util.*;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumParticleTypes;
+import net.minecraft.util.ITickable;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
@@ -23,31 +25,24 @@ import java.util.Random;
 /**
  * Created by Caske2000 on 25/03/2016.
  */
-public class TileEntityArmorCharger extends TileEntityLockable implements IEnergyProvider, IEnergyReceiver, IPipeConnection, IInventory, ITickable
-{
+public class TileEntityArmorCharger extends TileEntityLockable implements IEnergyProvider, IEnergyReceiver, IInventory, ITickable {
+    private final int maxEnergy = Reference.CHARGER_MAX_ENERGY;
+    private final int maxTransfer = Reference.CHARGER_MAX_TRANSFER;
+    private final Random rand = new Random();
     private int energy;
-    private final int maxEnergy = Reference.Numbers.CHARGER_MAX_ENERGY;
-    private final int maxTransfer = Reference.Numbers.CHARGER_MAX_TRANSFER;
-
     private ItemStack armorChargerItemStack = null;
     private String customName;
-    private final Random rand = new Random();
 
     @Override
-    public Container createContainer(InventoryPlayer playerInventory, EntityPlayer playerIn)
-    {
+    public Container createContainer(InventoryPlayer playerInventory, EntityPlayer playerIn) {
         return new ContainerArmorCharger(playerInventory, this);
     }
 
     @Override
-    public void update()
-    {
-        if (!this.worldObj.isRemote)
-        {
-            if (this.armorChargerItemStack != null)
-            {
-                if (this.armorChargerItemStack.getItem() instanceof IEnergyContainerItem)
-                {
+    public void update() {
+        if (!this.worldObj.isRemote) {
+            if (this.armorChargerItemStack != null) {
+                if (this.armorChargerItemStack.getItem() instanceof IEnergyContainerItem) {
                     IEnergyContainerItem item = (IEnergyContainerItem) this.armorChargerItemStack.getItem();
                     int e = Math.min(Math.min(energy, maxTransfer), item.getMaxEnergyStored(this.armorChargerItemStack) -
                             item.getEnergyStored(this.armorChargerItemStack));
@@ -55,8 +50,7 @@ public class TileEntityArmorCharger extends TileEntityLockable implements IEnerg
                     extractEnergy(null, e, false);
                 }
             }
-        } else if (this.armorChargerItemStack != null)
-        {
+        } else if (this.armorChargerItemStack != null) {
             double xPos = rand.nextDouble();
             double zPos = rand.nextDouble();
             worldObj.spawnParticle(EnumParticleTypes.REDSTONE, pos.getX() + xPos, pos.getY() + 0.5D, pos.getZ() + zPos, 0.0D, 0.0D, 0.0D);
@@ -64,14 +58,12 @@ public class TileEntityArmorCharger extends TileEntityLockable implements IEnerg
     }
 
     @Override
-    public String getGuiID()
-    {
+    public String getGuiID() {
         return "armorplus:armorCharger";
     }
 
     @Override
-    public void readFromNBT(NBTTagCompound nbt)
-    {
+    public void readFromNBT(NBTTagCompound nbt) {
         super.readFromNBT(nbt);
         NBTTagList nbttaglist = nbt.getTagList("Items", 10);
 
@@ -86,14 +78,12 @@ public class TileEntityArmorCharger extends TileEntityLockable implements IEnerg
     }
 
     @Override
-    public NBTTagCompound writeToNBT(NBTTagCompound nbt)
-    {
+    public NBTTagCompound writeToNBT(NBTTagCompound nbt) {
         super.writeToNBT(nbt);
         nbt.setInteger("Energy", energy);
 
         NBTTagList nbttaglist = new NBTTagList();
-        if (this.armorChargerItemStack != null)
-        {
+        if (this.armorChargerItemStack != null) {
             NBTTagCompound nbttagcompound = new NBTTagCompound();
             nbttagcompound.setByte("Slot", (byte) 0);
             this.armorChargerItemStack.writeToNBT(nbttagcompound);
@@ -109,8 +99,7 @@ public class TileEntityArmorCharger extends TileEntityLockable implements IEnerg
     }
 
     @Override
-    public int extractEnergy(EnumFacing facing, int maxExtract, boolean simulate)
-    {
+    public int extractEnergy(EnumFacing facing, int maxExtract, boolean simulate) {
         int energyExtracted = Math.min(this.energy, Math.min(this.maxTransfer, maxExtract));
         if (!simulate)
             this.energy -= energyExtracted;
@@ -119,8 +108,7 @@ public class TileEntityArmorCharger extends TileEntityLockable implements IEnerg
     }
 
     @Override
-    public int receiveEnergy(EnumFacing facing, int maxReceive, boolean simulate)
-    {
+    public int receiveEnergy(EnumFacing facing, int maxReceive, boolean simulate) {
         int energyReceived = Math.min(this.maxEnergy - this.energy, Math.min(this.maxTransfer, maxReceive));
         if (!simulate)
             this.energy += energyReceived;
@@ -129,8 +117,7 @@ public class TileEntityArmorCharger extends TileEntityLockable implements IEnerg
     }
 
     @Override
-    public int getEnergyStored(EnumFacing facing)
-    {
+    public int getEnergyStored(EnumFacing facing) {
         if (this.energy > this.maxEnergy)
             this.energy = this.maxEnergy;
         else if (this.energy < 0)
@@ -139,52 +126,43 @@ public class TileEntityArmorCharger extends TileEntityLockable implements IEnerg
     }
 
     @Override
-    public int getMaxEnergyStored(EnumFacing facing)
-    {
+    public int getMaxEnergyStored(EnumFacing facing) {
         return this.maxEnergy;
     }
 
-    @Override
-    public ConnectOverride overridePipeConnection(IPipeTile.PipeType type, EnumFacing with)
-    {
+    /*@Override
+    public ConnectOverride overridePipeConnection(IPipeTile.PipeType type, EnumFacing with) {
         return type == IPipeTile.PipeType.POWER && with == EnumFacing.DOWN ? ConnectOverride.CONNECT : ConnectOverride.DISCONNECT;
-    }
+    }*/
 
     @Override
-    public boolean canConnectEnergy(EnumFacing facing)
-    {
+    public boolean canConnectEnergy(EnumFacing facing) {
         return true;
     }
 
     @Override
-    public int getSizeInventory()
-    {
+    public int getSizeInventory() {
         return 1;
     }
 
     @Override
-    public ItemStack getStackInSlot(int index)
-    {
+    public ItemStack getStackInSlot(int index) {
         if (index != 0)
             return null;
         return this.armorChargerItemStack;
     }
 
     @Override
-    public ItemStack decrStackSize(int index, int count)
-    {
-        if (this.getStackInSlot(index) != null)
-        {
+    public ItemStack decrStackSize(int index, int count) {
+        if (this.getStackInSlot(index) != null) {
             ItemStack itemstack;
 
-            if (this.getStackInSlot(index).stackSize <= count)
-            {
+            if (this.getStackInSlot(index).stackSize <= count) {
                 itemstack = this.getStackInSlot(index);
                 this.setInventorySlotContents(index, null);
                 this.markDirty();
                 return itemstack;
-            } else
-            {
+            } else {
                 itemstack = this.getStackInSlot(index).splitStack(count);
 
                 if (this.getStackInSlot(index).stackSize <= 0)
@@ -200,10 +178,8 @@ public class TileEntityArmorCharger extends TileEntityLockable implements IEnerg
     }
 
     @Override
-    public ItemStack removeStackFromSlot(int index)
-    {
-        if (index == 0)
-        {
+    public ItemStack removeStackFromSlot(int index) {
+        if (index == 0) {
             ItemStack itemstack = this.armorChargerItemStack;
             this.armorChargerItemStack = null;
             return itemstack;
@@ -212,8 +188,7 @@ public class TileEntityArmorCharger extends TileEntityLockable implements IEnerg
     }
 
     @Override
-    public void setInventorySlotContents(int index, ItemStack stack)
-    {
+    public void setInventorySlotContents(int index, ItemStack stack) {
         if (index != 0)
             return;
 
@@ -228,85 +203,71 @@ public class TileEntityArmorCharger extends TileEntityLockable implements IEnerg
     }
 
     @Override
-    public int getInventoryStackLimit()
-    {
+    public int getInventoryStackLimit() {
         return 1;
     }
 
     @Override
-    public boolean isUseableByPlayer(EntityPlayer player)
-    {
+    public boolean isUseableByPlayer(EntityPlayer player) {
         return this.worldObj.getTileEntity(this.pos) == this && player.getDistanceSq((double) this.pos.getX() + 0.5D, (double) this.pos.getY() + 0.5D, (double) this.pos.getZ() + 0.5D) <= 64.0D;
     }
 
     @Override
-    public boolean isItemValidForSlot(int index, ItemStack stack)
-    {
+    public boolean isItemValidForSlot(int index, ItemStack stack) {
         return true;
     }
 
     @Override
-    public int getField(int id)
-    {
+    public int getField(int id) {
         return id == 0 ? this.energy : 0;
     }
 
     @Override
-    public void setField(int id, int value)
-    {
+    public void setField(int id, int value) {
         if (id == 0)
             this.energy = value;
     }
 
     @Override
-    public int getFieldCount()
-    {
+    public int getFieldCount() {
         return 1;
     }
 
     @Override
-    public void clear()
-    {
+    public void clear() {
         this.armorChargerItemStack = null;
     }
 
     @Override
-    public String getName()
-    {
+    public String getName() {
         return this.hasCustomName() ? this.customName : "container.tileEntityArmorCharger";
     }
 
-    private String getCustomName()
-    {
+    private String getCustomName() {
         return this.customName;
     }
 
-    public void setCustomName(String customName)
-    {
+    public void setCustomName(String customName) {
         this.customName = customName;
     }
 
     @Override
-    public boolean hasCustomName()
-    {
+    public boolean hasCustomName() {
         return this.customName != null && !this.customName.equals("");
     }
 
     @Override
-    public ITextComponent getDisplayName()
-    {
+    public ITextComponent getDisplayName() {
         return this.hasCustomName() ? new TextComponentString(this.getName()) : new TextComponentTranslation(this.getName());
     }
 
     @Override
-    public void openInventory(EntityPlayer player)
-    {
+    public void openInventory(EntityPlayer player) {
 
     }
 
     @Override
-    public void closeInventory(EntityPlayer player)
-    {
+    public void closeInventory(EntityPlayer player) {
 
     }
 }

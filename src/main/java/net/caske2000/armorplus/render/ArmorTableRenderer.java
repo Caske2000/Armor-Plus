@@ -12,18 +12,15 @@ import org.lwjgl.opengl.GL11;
 /**
  * Created by Caske2000 on 6-3-2016.
  */
-public class ArmorTableRenderer extends TileEntitySpecialRenderer
-{
+public class ArmorTableRenderer extends TileEntitySpecialRenderer {
     private final EntityItem displayItem = new EntityItem(Minecraft.getMinecraft().theWorld, 0D, 0D, 0D);
     private float angle = 0;
 
     @Override
-    public void renderTileEntityAt(TileEntity te, double x, double y, double z, float partialTicks, int destroyStage)
-    {
+    public void renderTileEntityAt(TileEntity te, double x, double y, double z, float partialTicks, int destroyStage) {
         TileEntityArmorTable armorTable = (TileEntityArmorTable) te;
         ItemStack armor = armorTable.getStackInSlot(1);
-        if (armor != null)
-        {
+        if (armor != null) {
             displayItem.setEntityItemStack(armor);
 
             GlStateManager.pushMatrix();

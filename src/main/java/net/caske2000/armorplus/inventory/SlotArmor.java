@@ -8,19 +8,16 @@ import net.minecraft.item.ItemStack;
 /**
  * Created by Caske2000 on 6-3-2016.
  */
-class SlotArmor extends Slot
-{
+class SlotArmor extends Slot {
     private final boolean isInput;
 
-    public SlotArmor(IInventory inv, int index, int xPos, int yPos, boolean isInput)
-    {
+    public SlotArmor(IInventory inv, int index, int xPos, int yPos, boolean isInput) {
         super(inv, index, xPos, yPos);
         this.isInput = isInput;
     }
 
     @Override
-    public boolean isItemValid(ItemStack stack)
-    {
+    public boolean isItemValid(ItemStack stack) {
         return (stack.getItem() instanceof ItemCustomArmor && isInput);
     }
 

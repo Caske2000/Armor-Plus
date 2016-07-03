@@ -12,18 +12,15 @@ import java.util.Collection;
 /**
  * Created by Caske2000 on 7-3-2016.
  */
-public final class ArmorUpgradeHelper
-{
+public final class ArmorUpgradeHelper {
 
-    public static int onTick(String upgrade, EntityPlayer player, World world)
-    {
+    public static int onTick(String upgrade, EntityPlayer player, World world) {
         int extraCost = 0;
         if (upgrade.equals(Reference.TYPES[0])) // SPEED
             player.addPotionEffect(new PotionEffect(CustomPotion.speedPotion, 0, 0, false, false));
         else if (upgrade.equals(Reference.TYPES[1])) // DEATH_PROTECTION
         {
-            if (player.getHealth() <= 2)
-            {
+            if (player.getHealth() <= 2) {
                 player.heal(4);
                 extraCost = 4000;
             }
@@ -34,10 +31,8 @@ public final class ArmorUpgradeHelper
         else if (upgrade.equals(Reference.TYPES[4])) // POTION_REMOVER
         {
             Collection<PotionEffect> potionEffects = player.getActivePotionEffects();
-            for (PotionEffect effect : potionEffects)
-            {
-                if (effect.getPotion().isBadEffect())
-                {
+            for (PotionEffect effect : potionEffects) {
+                if (effect.getPotion().isBadEffect()) {
                     player.removePotionEffect(effect.getPotion());
                     extraCost = 700;
                 }

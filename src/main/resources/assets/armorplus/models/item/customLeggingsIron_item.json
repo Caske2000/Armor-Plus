@@ -1,5 +1,5 @@
 {
-  "parent": "armorplus:item/standard_item",
+  "parent": "item/generated",
   "textures": {
     "layer0": "armorplus:items/customLeggingsIron_item"
   }

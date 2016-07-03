@@ -12,21 +12,18 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 /**
  * Created by Caske2000 on 25/03/2016.
  */
-public class ContainerArmorCharger extends Container
-{
+public class ContainerArmorCharger extends Container {
     private final IInventory invCharger;
     private int energy;
 
-    public ContainerArmorCharger(IInventory invPlayer, IInventory invCharger)
-    {
+    public ContainerArmorCharger(IInventory invPlayer, IInventory invCharger) {
         // TE: 0
         // PLAYER_LARGE: 1-27
         // HOTBAR: 28-36
         this.invCharger = invCharger;
         this.addSlotToContainer(new SlotArmor(invCharger, 0, 80, 35, true));
 
-        for (int i = 0; i < 3; ++i)
-        {
+        for (int i = 0; i < 3; ++i) {
             for (int j = 0; j < 9; ++j)
                 this.addSlotToContainer(new Slot(invPlayer, j + i * 9 + 9, 8 + j * 18, 84 + i * 18));
         }
@@ -36,8 +33,7 @@ public class ContainerArmorCharger extends Container
     }
 
     @Override
-    public ItemStack transferStackInSlot(EntityPlayer playerIn, int fromSlot)
-    {
+    public ItemStack transferStackInSlot(EntityPlayer playerIn, int fromSlot) {
         ItemStack previous = null;
         Slot slot = this.inventorySlots.get(fromSlot);
 
@@ -56,8 +52,7 @@ public class ContainerArmorCharger extends Container
                     return null;
             } else {
                 // From Player Inventory to TE Inventory
-                if (this.inventorySlots.get(0).getStack() == null)
-                {
+                if (this.inventorySlots.get(0).getStack() == null) {
                     this.inventorySlots.get(0).putStack(current);
                     slot.putStack(null);
                 }
@@ -73,15 +68,13 @@ public class ContainerArmorCharger extends Container
     }
 
     @Override
-    public void addListener(IContainerListener listener)
-    {
+    public void addListener(IContainerListener listener) {
         super.addListener(listener);
         listener.sendAllWindowProperties(this, this.invCharger);
     }
 
     @Override
-    public void detectAndSendChanges()
-    {
+    public void detectAndSendChanges() {
         super.detectAndSendChanges();
         for (int i = 0; i < this.listeners.size(); ++i) {
 
@@ -95,14 +88,12 @@ public class ContainerArmorCharger extends Container
     }
 
     @SideOnly(Side.CLIENT)
-    public void updateProgressBar(int id, int data)
-    {
+    public void updateProgressBar(int id, int data) {
         this.invCharger.setField(id, data);
     }
 
     @Override
-    public boolean canInteractWith(EntityPlayer playerIn)
-    {
+    public boolean canInteractWith(EntityPlayer playerIn) {
         return this.invCharger.isUseableByPlayer(playerIn);
     }
 }

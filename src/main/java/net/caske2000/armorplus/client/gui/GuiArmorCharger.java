@@ -14,16 +14,14 @@ import net.minecraft.util.ResourceLocation;
 /**
  * Created by Caske2000 on 26/03/2016.
  */
-public class GuiArmorCharger extends GuiContainer
-{
+public class GuiArmorCharger extends GuiContainer {
     private final IInventory playerInv;
     private final TileEntityArmorCharger te;
     private ScaledResolution res;
     private String text;
     private int stringWidth;
 
-    public GuiArmorCharger(IInventory playerInv, TileEntityArmorCharger te)
-    {
+    public GuiArmorCharger(IInventory playerInv, TileEntityArmorCharger te) {
         super(new ContainerArmorCharger(playerInv, te));
 
         this.playerInv = playerInv;
@@ -33,8 +31,7 @@ public class GuiArmorCharger extends GuiContainer
     }
 
     @Override
-    protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY)
-    {
+    protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
         GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
         this.mc.getTextureManager().bindTexture(new ResourceLocation("armorplus:textures/gui/container/armorCharger_block.png"));
         this.drawTexturedModalRect(this.guiLeft, this.guiTop, 0, 0, this.xSize, this.ySize);
@@ -44,11 +41,9 @@ public class GuiArmorCharger extends GuiContainer
     }
 
     @Override
-    protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY)
-    {
+    protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
         GlStateManager.pushMatrix();
-        if (mouseX >= 12 + guiLeft && mouseX <= 25 + guiLeft && mouseY >= 17 + guiTop && mouseY <= 68 + guiTop)
-        {
+        if (mouseX >= 12 + guiLeft && mouseX <= 25 + guiLeft && mouseY >= 17 + guiTop && mouseY <= 68 + guiTop) {
             text = String.valueOf(te.getField(0) + " / " + te.getMaxEnergyStored(EnumFacing.DOWN) + " RF");
             stringWidth = Minecraft.getMinecraft().fontRendererObj.getStringWidth(text);
 
@@ -59,12 +54,12 @@ public class GuiArmorCharger extends GuiContainer
             GlStateManager.disableLighting();
             GlStateManager.disableDepth();
 
-            int newX = mouseX + 12, newY = mouseY - 12;
+            int newX = mouseX, newY = mouseY;
 
             if (newX + stringWidth > res.getScaledWidth())
                 newX -= 28 + stringWidth;
 
-            if (newY + 8 + 6 > res.getScaledHeight())
+            if (newY + 14 > res.getScaledHeight())
                 newY = res.getScaledHeight() - 14;
 
             this.zLevel = 300.0F;

@@ -1,7 +1,10 @@
 package net.caske2000.armorplus.inventory;
 
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.inventory.*;
+import net.minecraft.inventory.Container;
+import net.minecraft.inventory.IContainerListener;
+import net.minecraft.inventory.IInventory;
+import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -9,13 +12,11 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 /**
  * Created by Caske2000 on 9-2-2016.
  */
-public class ContainerArmorTable extends Container
-{
+public class ContainerArmorTable extends Container {
     private final IInventory invTable;
     private int currentWorkTime, totalWorkTime;
 
-    public ContainerArmorTable(IInventory invPlayer, IInventory invTable)
-    {
+    public ContainerArmorTable(IInventory invPlayer, IInventory invTable) {
         // TE: 0-2
         // PLAYER_LARGE: 3-29
         // HOTBAR: 30-38
@@ -24,8 +25,7 @@ public class ContainerArmorTable extends Container
         this.addSlotToContainer(new SlotArmor(invTable, 1, 56, 53, true));
         this.addSlotToContainer(new SlotArmor(invTable, 2, 116, 35, false));
 
-        for (int i = 0; i < 3; ++i)
-        {
+        for (int i = 0; i < 3; ++i) {
             for (int j = 0; j < 9; ++j)
                 this.addSlotToContainer(new Slot(invPlayer, j + i * 9 + 9, 8 + j * 18, 84 + i * 18));
         }
@@ -139,19 +139,16 @@ public class ContainerArmorTable extends Container
     }
 
     @Override
-    public void addListener(IContainerListener listener)
-    {
+    public void addListener(IContainerListener listener) {
         super.addListener(listener);
         listener.sendAllWindowProperties(this, this.invTable);
     }
 
     @Override
-    public void detectAndSendChanges()
-    {
+    public void detectAndSendChanges() {
         super.detectAndSendChanges();
 
-        for (int i = 0; i < this.listeners.size(); ++i)
-        {
+        for (int i = 0; i < this.listeners.size(); ++i) {
             IContainerListener icontainerlistener = this.listeners.get(i);
 
             if (this.currentWorkTime != this.invTable.getField(0))
@@ -166,14 +163,12 @@ public class ContainerArmorTable extends Container
     }
 
     @SideOnly(Side.CLIENT)
-    public void updateProgressBar(int id, int data)
-    {
+    public void updateProgressBar(int id, int data) {
         this.invTable.setField(id, data);
     }
 
     @Override
-    public boolean canInteractWith(EntityPlayer playerIn)
-    {
+    public boolean canInteractWith(EntityPlayer playerIn) {
         return this.invTable.isUseableByPlayer(playerIn);
     }
 }

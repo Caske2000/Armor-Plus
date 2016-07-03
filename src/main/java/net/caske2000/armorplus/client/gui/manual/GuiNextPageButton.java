@@ -8,22 +8,18 @@ import net.minecraft.util.ResourceLocation;
 /**
  * Created by Caske2000 on 27/03/2016.
  */
-class GuiNextPageButton extends GuiButton
-{
+class GuiNextPageButton extends GuiButton {
     private final boolean isNextBtn;
     private final ResourceLocation TEXTURE = new ResourceLocation("armorplus", "textures/gui/manualBackground.png");
 
-    public GuiNextPageButton(int id, int x, int y, boolean isNextBtn)
-    {
+    public GuiNextPageButton(int id, int x, int y, boolean isNextBtn) {
         super(id, x, y, 16, 14, "");
         this.isNextBtn = isNextBtn;
     }
 
     @Override
-    public void drawButton(Minecraft mc, int mouseX, int mouseY)
-    {
-        if (this.visible)
-        {
+    public void drawButton(Minecraft mc, int mouseX, int mouseY) {
+        if (this.visible) {
             GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
             this.hovered = mouseX >= this.xPosition && mouseY >= this.yPosition && mouseX < this.xPosition + this.width && mouseY < this.yPosition + this.height;
             mc.getTextureManager().bindTexture(TEXTURE);

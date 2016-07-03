@@ -7,17 +7,14 @@ import net.minecraft.nbt.NBTTagCompound;
 /**
  * Created by Caske2000 on 6-3-2016.
  */
-public final class ArmorTableRecipes
-{
-    public static ItemStack getCraftingRecipe(ItemStack upgrade, ItemStack armor)
-    {
+public final class ArmorTableRecipes {
+    public static ItemStack getCraftingRecipe(ItemStack upgrade, ItemStack armor) {
         if (upgrade == null || armor == null)
             throw new NullPointerException("The upgrade or armor used for crafting returned a null.");
 
         ItemStack result = armor.copy();
 
-        if (upgrade.getItem() instanceof ItemArmorUpgrade)
-        {
+        if (upgrade.getItem() instanceof ItemArmorUpgrade) {
             if (!result.hasTagCompound())
                 result.setTagCompound(new NBTTagCompound());
             result.getTagCompound().setBoolean(upgrade.getUnlocalizedName().substring(23), true);

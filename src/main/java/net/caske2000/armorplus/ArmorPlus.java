@@ -3,13 +3,11 @@ package net.caske2000.armorplus;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.sun.org.apache.regexp.internal.RE;
 import net.caske2000.armorplus.achievements.ArmorAchievements;
 import net.caske2000.armorplus.client.gui.manual.GuiItemInfo;
 import net.caske2000.armorplus.lib.Reference;
 import net.caske2000.armorplus.proxy.CommonProxy;
 import net.caske2000.armorplus.util.VersionChecker;
-import net.minecraft.util.text.translation.LanguageMap;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -17,15 +15,12 @@ import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import org.apache.commons.codec.language.bm.Lang;
 
 import java.io.BufferedReader;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 
 @Mod(modid = Reference.MODID, name = Reference.MODNAME, version = Reference.VERSION, acceptedMinecraftVersions = Reference.ACCEPTED_MC_VERSIONS)
-public class ArmorPlus
-{
+public class ArmorPlus {
     public static VersionChecker versionChecker;
     public static boolean isWarnedVersionOutOfDate = false;
 
@@ -36,8 +31,7 @@ public class ArmorPlus
     private static CommonProxy proxy;
 
     @EventHandler
-    public void preInit(FMLPreInitializationEvent event)
-    {
+    public void preInit(FMLPreInitializationEvent event) {
         proxy.preInit(event);
 
         ArmorAchievements.init();
@@ -45,8 +39,7 @@ public class ArmorPlus
         JsonParser parser = new JsonParser();
         BufferedReader br;
 
-        try
-        {
+        try {
             br = new BufferedReader(new InputStreamReader(getClass().getClassLoader()
                     .getResourceAsStream("assets/armorplus/lang/manual_" + FMLCommonHandler.instance().getCurrentLanguage() + ".json"), "UTF-8"));
             if (!br.ready())
@@ -58,8 +51,7 @@ public class ArmorPlus
             JsonArray array = json.getAsJsonArray("Blocks");
             String[] description;
 
-            for (int i = 0; i < array.size(); i++)
-            {
+            for (int i = 0; i < array.size(); i++) {
                 JsonObject object = (JsonObject) array.get(i);
                 JsonArray descArray = object.getAsJsonArray("description");
                 description = new String[descArray.size()];
@@ -70,8 +62,7 @@ public class ArmorPlus
 
             array = json.getAsJsonArray("Items");
 
-            for (int i = 0; i < array.size(); i++)
-            {
+            for (int i = 0; i < array.size(); i++) {
                 JsonObject object = (JsonObject) array.get(i);
                 JsonArray descArray = object.getAsJsonArray("description");
                 description = new String[descArray.size()];
@@ -81,21 +72,18 @@ public class ArmorPlus
             }
             br.close();
 
-        } catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
     @EventHandler
-    public void init(FMLInitializationEvent event)
-    {
+    public void init(FMLInitializationEvent event) {
         proxy.init(event);
     }
 
     @EventHandler
-    public void postInit(FMLPostInitializationEvent event)
-    {
+    public void postInit(FMLPostInitializationEvent event) {
         proxy.postInit(event);
     }
 }

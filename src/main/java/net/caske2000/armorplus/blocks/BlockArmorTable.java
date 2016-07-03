@@ -67,4 +67,14 @@ class BlockArmorTable extends BlockContainer {
     public TileEntity createNewTileEntity(World worldIn, int meta) {
         return new TileEntityArmorTable();
     }
+
+    @Override
+    public boolean isFullBlock(IBlockState state) {
+        return false;
+    }
+
+    @Override
+    public boolean isOpaqueCube(IBlockState state) {
+        return false;
+    }
 }

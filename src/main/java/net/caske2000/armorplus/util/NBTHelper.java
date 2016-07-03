@@ -6,30 +6,25 @@ import net.minecraft.nbt.NBTTagCompound;
 /**
  * Created by Caske2000 on 26/03/2016.
  */
-public class NBTHelper
-{
-    private static void initNBTTagCompound(ItemStack itemStack)
-    {
+public class NBTHelper {
+    private static void initNBTTagCompound(ItemStack itemStack) {
         if (itemStack.getTagCompound() == null)
             itemStack.setTagCompound(new NBTTagCompound());
     }
 
-    public static NBTTagCompound getNBT(ItemStack itemStack)
-    {
+    public static NBTTagCompound getNBT(ItemStack itemStack) {
         initNBTTagCompound(itemStack);
 
         return itemStack.getTagCompound();
     }
 
-    public static void setInteger(ItemStack itemStack, String keyName, int keyValue)
-    {
+    public static void setInteger(ItemStack itemStack, String keyName, int keyValue) {
         initNBTTagCompound(itemStack);
 
         itemStack.getTagCompound().setInteger(keyName, keyValue);
     }
 
-    public static int getInteger(ItemStack itemStack, String keyName, int defaultValue)
-    {
+    public static int getInteger(ItemStack itemStack, String keyName, int defaultValue) {
         initNBTTagCompound(itemStack);
 
         if (!itemStack.getTagCompound().hasKey(keyName))
@@ -38,15 +33,13 @@ public class NBTHelper
         return itemStack.getTagCompound().getInteger(keyName);
     }
 
-    public static void setShort(ItemStack itemStack, String keyName, short keyValue)
-    {
+    public static void setShort(ItemStack itemStack, String keyName, short keyValue) {
         initNBTTagCompound(itemStack);
 
         itemStack.getTagCompound().setShort(keyName, keyValue);
     }
 
-    public static short getShort(ItemStack itemStack, String keyName, short defaultValue)
-    {
+    public static short getShort(ItemStack itemStack, String keyName, short defaultValue) {
         initNBTTagCompound(itemStack);
 
         if (!itemStack.getTagCompound().hasKey(keyName))
@@ -55,8 +48,7 @@ public class NBTHelper
         return itemStack.getTagCompound().getShort(keyName);
     }
 
-    public static ItemStack setDefaultEnergyTag(ItemStack stack, int energy)
-    {
+    public static ItemStack setDefaultEnergyTag(ItemStack stack, int energy) {
         if (stack.getTagCompound() == null)
             stack.setTagCompound(new NBTTagCompound());
 

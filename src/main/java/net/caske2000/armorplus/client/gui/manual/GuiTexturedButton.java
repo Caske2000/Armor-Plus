@@ -11,16 +11,14 @@ import net.minecraft.item.ItemStack;
 /**
  * Created by Caske2000 on 27/03/2016.
  */
-class GuiTexturedButton extends GuiButton
-{
+class GuiTexturedButton extends GuiButton {
     private final ItemStack itemStack;
     private final int scale;
     private final int stringWidth;
     private final String text;
     private ScaledResolution res;
 
-    public GuiTexturedButton(int buttonId, int x, int y, ItemStack itemStack, String text, int scale)
-    {
+    public GuiTexturedButton(int buttonId, int x, int y, ItemStack itemStack, String text, int scale) {
         // The size of a scale = 1 item is 15x15 pixels
         super(buttonId, x, y, 15 * scale, 15 * scale, "");
         this.itemStack = itemStack;
@@ -30,10 +28,8 @@ class GuiTexturedButton extends GuiButton
     }
 
     @Override
-    public void drawButton(Minecraft mc, int mouseX, int mouseY)
-    {
-        if (this.visible)
-        {
+    public void drawButton(Minecraft mc, int mouseX, int mouseY) {
+        if (this.visible) {
             GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
             this.hovered = mouseX >= this.xPosition && mouseY >= this.yPosition && mouseX < this.xPosition + this.width && mouseY < this.yPosition + this.height;
 
@@ -56,8 +52,7 @@ class GuiTexturedButton extends GuiButton
         }
     }
 
-    private void drawHoveringText(int x, int y)
-    {
+    private void drawHoveringText(int x, int y) {
         res = new ScaledResolution(Minecraft.getMinecraft());
 
         GlStateManager.disableRescaleNormal();

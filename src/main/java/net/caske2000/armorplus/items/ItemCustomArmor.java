@@ -2,14 +2,12 @@ package net.caske2000.armorplus.items;
 
 import cofh.api.energy.IEnergyContainerItem;
 import net.caske2000.armorplus.lib.Reference;
-import net.caske2000.armorplus.util.StringHelper;
 import net.caske2000.armorplus.util.ArmorUpgradeHelper;
 import net.caske2000.armorplus.util.NBTHelper;
+import net.caske2000.armorplus.util.StringHelper;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.enchantment.Enchantment;
-import net.minecraft.enchantment.EnchantmentDurability;
 import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
@@ -27,8 +25,7 @@ import java.util.List;
 /**
  * Created by Caske2000 on 8-2-2016.
  */
-public class ItemCustomArmor extends ItemArmor implements IEnergyContainerItem, ISpecialArmor
-{
+public class ItemCustomArmor extends ItemArmor implements IEnergyContainerItem, ISpecialArmor {
     private final CustomArmorMaterial customMaterial;
     private final int maxEnergy, maxTransfer, energyPerDamage;
     private final byte upgradeAmount, maxUpgradeAmount;
@@ -37,8 +34,7 @@ public class ItemCustomArmor extends ItemArmor implements IEnergyContainerItem, 
     // TODO stop checking isEfficient every tick, save it in NBT
     private boolean warning, isEfficient = false;
 
-    public ItemCustomArmor(String unlocalizedName, ArmorMaterial material, CustomArmorMaterial customMaterial, int renderIndex, EntityEquipmentSlot equipmentSlot)
-    {
+    public ItemCustomArmor(String unlocalizedName, ArmorMaterial material, CustomArmorMaterial customMaterial, int renderIndex, EntityEquipmentSlot equipmentSlot) {
         super(material, renderIndex, equipmentSlot);
         setUnlocalizedName(unlocalizedName);
         setRegistryName(unlocalizedName);
@@ -64,16 +60,14 @@ public class ItemCustomArmor extends ItemArmor implements IEnergyContainerItem, 
     }*/
 
     @Override
-    public void onCreated(ItemStack itemStack, World worldIn, EntityPlayer playerIn)
-    {
+    public void onCreated(ItemStack itemStack, World worldIn, EntityPlayer playerIn) {
         itemStack.setTagCompound(new NBTTagCompound());
         itemStack.getTagCompound().setShort("UPGRADE_AMOUNT", upgradeAmount);
         itemStack.getTagCompound().setShort("MAX_UPGRADE_AMOUNT", maxUpgradeAmount);
     }
 
     @Override
-    public void onArmorTick(World world, EntityPlayer player, ItemStack itemStack)
-    {
+    public void onArmorTick(World world, EntityPlayer player, ItemStack itemStack) {
         warning = NBTHelper.getInteger(itemStack, "ENERGY", 0) < 2000 + 500 * upgradeAmount;
         if (warning)
             return;
@@ -83,10 +77,8 @@ public class ItemCustomArmor extends ItemArmor implements IEnergyContainerItem, 
         tmpCost = 0;
         // Yes, I am checking for every kind of upgrade, but the difference between checking them all and only checking for armor specific once is too small
         // On average this way of doing things is 4000 nanoseconds slower which I don't think is worth it
-        for (String upgrade : Reference.TYPES)
-        {
-            if (itemStack.getTagCompound().getBoolean(upgrade))
-            {
+        for (String upgrade : Reference.TYPES) {
+            if (itemStack.getTagCompound().getBoolean(upgrade)) {
                 if (upgrade.equals(Reference.TYPES[5]))
                     isEfficient = true;
                 else
@@ -104,15 +96,13 @@ public class ItemCustomArmor extends ItemArmor implements IEnergyContainerItem, 
 
     // region Energy Stuff
     @Override
-    public int receiveEnergy(ItemStack stack, int maxReceive, boolean simulate)
-    {
+    public int receiveEnergy(ItemStack stack, int maxReceive, boolean simulate) {
         if (stack.getTagCompound() == null)
             NBTHelper.setInteger(stack, "ENERGY", 0);
         int stored = stack.getTagCompound().getInteger("ENERGY");
         int receive = Math.min(maxReceive, Math.min(maxEnergy - stored, maxTransfer));
 
-        if (!simulate)
-        {
+        if (!simulate) {
             stored += receive;
             stack.getTagCompound().setInteger("ENERGY", stored);
         }
@@ -120,15 +110,13 @@ public class ItemCustomArmor extends ItemArmor implements IEnergyContainerItem, 
     }
 
     @Override
-    public int extractEnergy(ItemStack stack, int maxExtract, boolean simulate)
-    {
+    public int extractEnergy(ItemStack stack, int maxExtract, boolean simulate) {
         if (stack.getTagCompound() == null)
             NBTHelper.setInteger(stack, "ENERGY", 0);
         int stored = stack.getTagCompound().getInteger("ENERGY");
         int extract = Math.min(maxExtract, stored);
 
-        if (!simulate)
-        {
+        if (!simulate) {
             stored -= extract;
             stack.getTagCompound().setInteger("ENERGY", stored);
         }
@@ -136,23 +124,20 @@ public class ItemCustomArmor extends ItemArmor implements IEnergyContainerItem, 
     }
 
     @Override
-    public int getEnergyStored(ItemStack stack)
-    {
+    public int getEnergyStored(ItemStack stack) {
         if (stack.getTagCompound() == null)
             NBTHelper.setInteger(stack, "ENERGY", 0);
         return stack.getTagCompound().getInteger("ENERGY");
     }
 
     @Override
-    public int getMaxEnergyStored(ItemStack itemStack)
-    {
+    public int getMaxEnergyStored(ItemStack itemStack) {
         return maxEnergy;
     }
     // endregion
 
     @Override
-    public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean check)
-    {
+    public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean check) {
         if (stack.getTagCompound() == null)
             NBTHelper.setInteger(stack, "ENERGY", 0);
         if (stack.getTagCompound().getInteger("MAX_ENERGY") == 0)
@@ -163,8 +148,7 @@ public class ItemCustomArmor extends ItemArmor implements IEnergyContainerItem, 
         if (!stack.getTagCompound().hasKey("MAX_UPGRADE_AMOUNT"))
             NBTHelper.setShort(stack, "MAX_UPGRADE_AMOUNT", maxUpgradeAmount);
 
-        if (StringHelper.isShiftKeyDown())
-        {
+        if (StringHelper.isShiftKeyDown()) {
             list.add(StringHelper.localize("info.caske.energy") + ": " + stack.getTagCompound().getInteger("ENERGY") + " / " + maxEnergy + " RF");
             list.add(StringHelper.localize("info.caske.io") + ": " + maxTransfer + " RF/t");
             list.add(StringHelper.localize("info.caske.upgrade") + ": " + stack.getTagCompound().getShort("UPGRADE_AMOUNT") + "/" + stack.getTagCompound().getShort("MAX_UPGRADE_AMOUNT"));
@@ -173,8 +157,7 @@ public class ItemCustomArmor extends ItemArmor implements IEnergyContainerItem, 
     }
 
     @Override
-    public double getDurabilityForDisplay(ItemStack stack)
-    {
+    public double getDurabilityForDisplay(ItemStack stack) {
         if (stack.getTagCompound() == null)
             NBTHelper.setInteger(stack, "ENERGY", 0);
         // Clamp double x ∈ [0.0D, 1.0D]
@@ -182,30 +165,25 @@ public class ItemCustomArmor extends ItemArmor implements IEnergyContainerItem, 
     }
 
     @Override
-    public void getSubItems(Item item, CreativeTabs tab, List<ItemStack> list)
-    {
+    public void getSubItems(Item item, CreativeTabs tab, List<ItemStack> list) {
         list.add(NBTHelper.setDefaultEnergyTag(new ItemStack(item, 1, 0), 0));
         list.add(NBTHelper.setDefaultEnergyTag(new ItemStack(item, 1, 0), maxEnergy));
     }
 
     // region ISpecialArmor stuff
     @Override
-    public ArmorProperties getProperties(EntityLivingBase player, ItemStack armor, DamageSource source, double damage, int slot)
-    {
+    public ArmorProperties getProperties(EntityLivingBase player, ItemStack armor, DamageSource source, double damage, int slot) {
         return new ArmorProperties(0, getArmorMaterial().getDamageReductionAmount(armorType) * 0.025, getEnergyStored(armor) / 3);
     }
 
     @Override
-    public int getArmorDisplay(EntityPlayer player, ItemStack armor, int slot)
-    {
+    public int getArmorDisplay(EntityPlayer player, ItemStack armor, int slot) {
         return getEnergyStored(armor) >= getEnergyPerDamage(armor) ? getAbsorptionRatio() : 0;
     }
 
-    private int getAbsorptionRatio()
-    {
+    private int getAbsorptionRatio() {
 
-        switch (armorType)
-        {
+        switch (armorType) {
             case HEAD:
                 return 3;
             case CHEST:
@@ -220,32 +198,27 @@ public class ItemCustomArmor extends ItemArmor implements IEnergyContainerItem, 
     }
 
     @Override
-    public void damageArmor(EntityLivingBase entity, ItemStack stack, DamageSource source, int damage, int slot)
-    {
+    public void damageArmor(EntityLivingBase entity, ItemStack stack, DamageSource source, int damage, int slot) {
         extractEnergy(stack, damage * getEnergyPerDamage(stack), false);
     }
 
-    private int getEnergyPerDamage(ItemStack stack)
-    {
+    private int getEnergyPerDamage(ItemStack stack) {
         int unbrLvl = MathHelper.clamp_int(EnchantmentHelper.getEnchantmentLevel(Enchantment.getEnchantmentByID(34), stack), 0, 4);
         return energyPerDamage * (5 - unbrLvl) / 5;
     }
     // endregion
 
     @Override
-    public boolean showDurabilityBar(ItemStack stack)
-    {
+    public boolean showDurabilityBar(ItemStack stack) {
         return true;
     }
 
     @Override
-    public boolean getIsRepairable(ItemStack toRepair, ItemStack repair)
-    {
+    public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
         return false;
     }
 
-    public boolean isWarning()
-    {
+    public boolean isWarning() {
         return warning;
     }
 }

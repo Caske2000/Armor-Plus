@@ -6,29 +6,23 @@ import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderHelper;
 
-import java.io.IOException;
-
 /**
  * Created by Caske2000 on 27/03/2016.
  */
-public class ManualItemPage extends GuiPage
-{
+public class ManualItemPage extends GuiPage {
 
-    public ManualItemPage(GuiManual gui)
-    {
+    public ManualItemPage(GuiManual gui) {
         super(gui);
     }
 
     @Override
-    public void init()
-    {
+    public void init() {
         buttons.clear();
         buttons.add(new GuiNextPageButton(0, gui.xPos + 24, gui.yPos + gui.ySize - 39, false));
     }
 
     @Override
-    public void draw()
-    {
+    public void draw() {
         for (int i = 0; i < gui.itemInfo.getDescription().length; i++)
             gui.drawString(Minecraft.getMinecraft().fontRendererObj, gui.itemInfo.getDescription()[i], gui.xPos + 30, gui.yPos + 80 + i * 12, 0xFFFFFF);
 
@@ -47,8 +41,7 @@ public class ManualItemPage extends GuiPage
     }
 
     @Override
-    public void actionPerformed(GuiButton button)
-    {
+    public void actionPerformed(GuiButton button) {
         if (button.id == 0)
             gui.changeLevel((short) 1);
     }
