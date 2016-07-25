@@ -1,6 +1,0 @@
-{
-  "parent": "item/generated",
-  "textures": {
-    "layer0": "armorplus:items/armorUpgrade_item_DIG_SPEED"
-  }
-}

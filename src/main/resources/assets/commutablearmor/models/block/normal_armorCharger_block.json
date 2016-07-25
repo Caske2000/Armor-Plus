@@ -1,0 +1,6 @@
+{
+  "parent": "commutablearmor:block/armorCharger_block",
+  "textures": {
+    "iron": "blocks/iron_block"
+  }
+}

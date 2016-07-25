@@ -1,0 +1,64 @@
+# Word & Sentence Stuffs
+info.caske.hold=Hold
+info.caske.shift= Shift
+info.caske.moreInfo= for more info
+info.caske.io=IO
+info.caske.energy=Energy Stored
+info.caske.upgrade=Upgrades applied
+info.caske.manual=Sine libris cella, sine anima corpus est
+info.caske.energyCore=This Item can be used as a battery as well!
+info.caske.upgrade_0=This upgrade can be applied to a helmet
+info.caske.upgrade_1=This upgrade can be applied to a chestplate
+info.caske.upgrade_2=This upgrade can be applied to leggings
+info.caske.upgrade_3=This upgrade can be applied to a pair of boots
+info.caske.upgrade_4=This upgrade can be applied to all types of armor
+
+# Items
+itemGroup.commutablearmor=Commutable Armor
+item.customHelmetIron_item.name=Custom Iron Helmet
+item.customChestplateIron_item.name=Custom Iron Chestplate
+item.customLeggingsIron_item.name=Custom Iron Leggings
+item.customBootsIron_item.name=Custom Iron Boots
+item.customHelmetDiamond_item.name=Custom Diamond Helmet
+item.customChestplateDiamond_item.name=Custom Diamond Chestplate
+item.customLeggingsDiamond_item.name=Custom Diamond Leggings
+item.customBootsDiamond_item.name=Custom Diamond Boots
+item.customHelmetAlloy_item.name=Custom Alloy Helmet
+item.customChestplateAlloy_item.name=Custom Alloy Chestplate
+item.customLeggingsAlloy_item.name=Custom Alloy Leggings
+item.customBootsAlloy_item.name=Custom Alloy Boots
+
+item.customSwordIron_item.name=Custom Iron Sword
+item.customSwordDiamond_item.name=Custom Diamond Sword
+item.customSwordAlloy_item.name=Custom Alloy Sword
+
+item.armorUpgradeTemplate_item.name=Blank Upgrade Template
+item.armorUpgrade_item_SPEED.name=Speed Upgrade
+item.armorUpgrade_item_FEEDER.name=Auto-Feeder Upgrade
+item.armorUpgrade_item_DEATH_PROTECTION.name=Death Protection Upgrade
+item.armorUpgrade_item_DIG_SPEED.name=Dig Speed Upgrade
+item.armorUpgrade_item_POTION_REMOVER.name=Potion Remover Upgrade
+item.armorUpgrade_item_EFFICIENCY.name=Efficiency Upgrade
+item.armorUpgrade_item_FLIGHT.name=Flight Upgrade
+item.armorUpgrade_item_NIGHT_VISION.name=Night Vision Upgrade
+item.armorUpgrade_item_FIRE_RES.name=Fire Resistance Upgrade
+item.armorUpgrade_item_SCUBA.name=Scuba Upgrade
+item.armorUpgrade_item_STRENGTH.name=Strength Upgrade
+
+item.manual_item.name=Commutable Armor Manual
+item.energyCore_item.name=Energy Core
+item.alloy_item.name=Energium Alloy Ingot
+
+# Blocks
+tile.armorTable_block.name=Armor Table
+tile.armorCharger_block.name=Armor Charger
+
+# GUIs
+container.tileEntityArmorTable=Armor Table
+container.tileEntityArmorCharger=Armor Charger
+
+# Achievements
+achievement.commutablearmor_tinkerer=A real tinkerer, I see...
+achievement.commutablearmor_tinkerer.desc=Start working on improving your armor by making an Armor Table
+achievement.commutablearmor_charger=With great power comes great responsibility...
+achievement.commutablearmor_charger.desc=Charge your armor using a Armor Charger™
